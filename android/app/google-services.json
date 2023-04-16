@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "558544661771",
+    "project_id": "job-positions-app",
+    "storage_bucket": "job-positions-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558544661771:android:25fcb58eff6ab91c97460e",
+        "android_client_info": {
+          "package_name": "com.anonymous.jobpositionsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558544661771-13mliigargindhg4j5d69642ha1bv1ru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABeiaTMrpqMnVmgBLsFfLGnRHSIY0cQx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558544661771-13mliigargindhg4j5d69642ha1bv1ru.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "558544661771-f4gquguk8c5qf6tlt2j6l5h7sd5a5lcv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anonymous.jobpositionsapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
