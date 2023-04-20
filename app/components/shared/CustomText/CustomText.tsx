@@ -1,16 +1,16 @@
 import { FC } from "react";
 import { CustomTextProps } from "./CustomText.interface";
 import { classNames } from "../../../utils/helpers";
-import { Text } from "react-native-paper";
+import { Text } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { DEFAULT_SCREEN_HEIGHT } from "../../../const/layout";
 import { styled } from "nativewind";
 
 const CustomText: FC<CustomTextProps> = ({
-  size,
+  size = "base",
   numberOfLines,
   textClassName,
-  weight,
+  weight = "normal",
   onPress,
   children,
   ...otherProps
@@ -62,15 +62,10 @@ const CustomText: FC<CustomTextProps> = ({
       break;
   }
 
-  const combinedClassName = classNames(
-    `font-${weight}`,
-    textClassName as string
-  );
-
   return (
     <Text
       onPress={onPress}
-      className={combinedClassName}
+      className={textClassName}
       style={{
         fontSize: RFValue(textSize, DEFAULT_SCREEN_HEIGHT),
         lineHeight: RFValue(lineHeight, DEFAULT_SCREEN_HEIGHT),
@@ -81,5 +76,4 @@ const CustomText: FC<CustomTextProps> = ({
     </Text>
   );
 };
-
-export default styled(CustomText, { props: { textClassName: true } });
+export default CustomText;

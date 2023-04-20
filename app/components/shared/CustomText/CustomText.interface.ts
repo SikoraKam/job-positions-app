@@ -4,7 +4,7 @@ import { TextProps } from "react-native";
 export interface CustomTextProps {
   size?: typeof TextSizeTypes[number];
   weight?: typeof TextWeightTypes[number];
-  textClassName?: TextProps["style"];
+  textClassName?: string;
   children?: ReactNode;
   onPress?: VoidFunction;
   numberOfLines?: number;
@@ -27,4 +27,5 @@ export const TextWeightTypes = [
   "normal",
   "medium",
   "semibold",
+  "bold",
 ] as const;

@@ -39,7 +39,7 @@ export const Header: FC<HeaderProps> = ({
         </TouchableOpacity>
       )}
       {title && (
-        <CustomText weight="medium" size="xl">
+        <CustomText size="xl" textClassName="text-primary font-semibold">
           {title}
         </CustomText>
       )}

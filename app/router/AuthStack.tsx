@@ -7,7 +7,11 @@ const Stack = createStackNavigator();
 
 export const AuthStack: FC = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name={"login"} component={Login} />
     </Stack.Navigator>
   );
