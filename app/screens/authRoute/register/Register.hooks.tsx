@@ -1,48 +1,46 @@
 import { FC } from "react";
-import { LoginScreen } from "./Login.screen";
+import { RegisterScreen } from "./Register.screen";
 import { useForm } from "react-hook-form";
-import { FormValues } from "./Login.interface";
+import { FormValues } from "./Register.interface";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigation } from "@react-navigation/native";
-import {
-  AuthScreenStackParamList,
-  AuthStackNavigatorType,
-} from "../../../router/AuthStack";
 
 const schema = yup
   .object({
-    email: yup.string().required().email(),
+    fullName: yup.string().required(),
+    email: yup.string().required().email().required(),
     password: yup.string().required().min(5),
+    passwordConfirmation: yup
+      .string()
+      .test("passwords-match", "Hasła muszą być identyczne", function (value) {
+        return this.parent.password === value;
+      }),
   })
   .required();
 
-export const Login: FC = () => {
-  const { navigate } = useNavigation<AuthStackNavigatorType>();
-
+export const Register: FC = () => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
+      fullName: "",
       email: "",
       password: "",
+      passwordConfirmation: "",
     },
     resolver: yupResolver(schema),
   });
 
-  const navigateToRegistration = () => navigate("Register");
-
   const onSubmit = (data: FormValues) => console.log(data);
 
   return (
-    <LoginScreen
+    <RegisterScreen
+      control={control}
       handleSubmit={handleSubmit}
       onSubmit={onSubmit}
       errors={errors}
-      control={control}
-      navigateToRegistration={navigateToRegistration}
     />
   );
 };

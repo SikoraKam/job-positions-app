@@ -1,11 +1,6 @@
 import { FC } from "react";
 import { KeyboardAvoidingView, ScrollView } from "react-native";
 import { KeyboardAvoidingScrollViewInterface } from "./KeyboardAvoidingScrollView.interface";
-import { styled } from "nativewind";
-
-// const KeyboardAvoidingView = styled(RNKeyboardAvoidingScrollView, {
-//   props: { contentContainerStyle: true },
-// });
 
 export const KeyboardAvoidingScrollView: FC<
   KeyboardAvoidingScrollViewInterface

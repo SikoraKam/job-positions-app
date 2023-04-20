@@ -5,14 +5,16 @@ import { Button } from "react-native-paper";
 import { ContentContainer } from "../../../components/shared/ContentContainer/ContentContainer";
 import { CustomInput } from "../../../components/shared/CustomInput/CustomInput";
 import { Controller } from "react-hook-form";
+import CustomText from "../../../components/shared/CustomText/CustomText";
 
 export const LoginScreen: FC<LoginScreenInterface> = ({
   control,
   handleSubmit,
   errors,
   onSubmit,
+  navigateToRegistration,
 }) => (
-  <ContentContainer title="Login" withBackButton={false}>
+  <ContentContainer title="Zaloguj się" withBackButton={false}>
     <View className="mt-12" style={{ gap: 8 }}>
       <Controller
         control={control}
@@ -24,7 +26,7 @@ export const LoginScreen: FC<LoginScreenInterface> = ({
             value={value}
             label="E-mail"
             error={errors.email}
-            errorLabel="Email error"
+            errorLabel={errors.email?.message}
           />
         )}
         name="email"
@@ -38,9 +40,9 @@ export const LoginScreen: FC<LoginScreenInterface> = ({
             onChange={onChange}
             onBlur={onBlur}
             value={value}
-            label="Password"
-            error={errors.email}
-            errorLabel="Password error"
+            label="Hasło"
+            error={errors.password}
+            errorLabel={errors.password?.message}
             secure
           />
         )}
@@ -56,6 +58,11 @@ export const LoginScreen: FC<LoginScreenInterface> = ({
         onPress={handleSubmit(onSubmit)}
       >
         Zaloguj
+      </Button>
+
+      <CustomText textClassName="mt-6 text-center">Nie masz konta?</CustomText>
+      <Button onPress={navigateToRegistration} className="py-1" mode="text">
+        Zarejestruj się
       </Button>
     </View>
   </ContentContainer>
