@@ -11,6 +11,7 @@ export const paperTheme = {
   ...DefaultTheme,
   // Specify custom property
   colors: colors,
+  roundness: 2,
 };
 
 export const { LightTheme: NavigationLightTheme } = adaptNavigationTheme({

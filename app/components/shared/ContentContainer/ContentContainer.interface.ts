@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export interface ContentContainerInterface {
   title?: string;
-  textClassName?: string;
+  classname?: string;
   withHeader?: boolean;
   withBackButton?: boolean;
   backButtonBehaviour?(): void;
