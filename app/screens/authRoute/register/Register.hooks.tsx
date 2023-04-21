@@ -4,12 +4,15 @@ import { useForm } from "react-hook-form";
 import { FormValues } from "./Register.interface";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { showToastError } from "../../../utils/toast";
+import auth from "@react-native-firebase/auth";
+import { registerUser } from "../../../services/api/auth.service";
 
 const schema = yup
   .object({
     fullName: yup.string().required(),
     email: yup.string().required().email().required(),
-    password: yup.string().required().min(5),
+    password: yup.string().required().min(6),
     passwordConfirmation: yup
       .string()
       .test("passwords-match", "Hasła muszą być identyczne", function (value) {
@@ -33,7 +36,19 @@ export const Register: FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: FormValues) => console.log(data);
+  const onSubmit = async (data: FormValues) => {
+    if (data.password !== data.passwordConfirmation) {
+      showToastError("Hasła muszą być identyczne");
+      return;
+    }
+
+    const response = await registerUser(
+      data.email,
+      data.password,
+      data.fullName
+    );
+    if (!response) return;
+  };
 
   return (
     <RegisterScreen
