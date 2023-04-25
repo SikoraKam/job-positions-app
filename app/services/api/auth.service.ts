@@ -47,3 +47,19 @@ const saveUserInFirestore = async (data: {
     throw Error();
   }
 };
+
+export const loginUser = async (email: string, password: string) => {
+  try {
+    const response = await auth().signInWithEmailAndPassword(email, password);
+    // const uid = response.user.uid
+    return true;
+  } catch (e: any) {
+    showToastError(e.message);
+    console.log(e.message);
+    return false;
+  }
+};
+
+export const logout = async () => {
+  await auth().signOut();
+};

@@ -9,6 +9,7 @@ import {
   AuthScreenStackParamList,
   AuthStackNavigatorType,
 } from "../../../router/AuthStack";
+import { loginUser } from "../../../services/api/auth.service";
 
 const schema = yup
   .object({
@@ -34,7 +35,9 @@ export const Login: FC = () => {
 
   const navigateToRegistration = () => navigate("Register");
 
-  const onSubmit = (data: FormValues) => console.log(data);
+  const onSubmit = async (data: FormValues) => {
+    await loginUser(data.email, data.password);
+  };
 
   return (
     <LoginScreen
