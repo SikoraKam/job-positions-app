@@ -11,12 +11,12 @@ import { LoadingIndicator } from "../LoadingIndicator/LoadingIndicator";
 import { Header } from "../Header/Header";
 
 const STATUS_BAR_HEIGHT = Constants.statusBarHeight;
-const ANDROID_HEADER_PADDING_TOP = STATUS_BAR_HEIGHT + 4;
+const ANDROID_HEADER_PADDING_TOP = STATUS_BAR_HEIGHT;
 const IOS_HEADER_PADDING_TOP = 16;
 const HAS_NOTCH = DeviceInfo.hasNotch();
 
 export const ContentContainer: FC<ContentContainerInterface> = ({
-  textClassName,
+  classname,
   title,
   withHeader = true,
   children,
@@ -46,7 +46,7 @@ export const ContentContainer: FC<ContentContainerInterface> = ({
             ? 0
             : IOS_HEADER_PADDING_TOP,
       }}
-      className={`flex-1 bg-background ${textClassName}`}
+      className={`flex-1 bg-background px-4 ${classname}`}
     >
       {withHeader && (
         <Header
