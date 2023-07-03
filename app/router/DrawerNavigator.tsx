@@ -2,9 +2,9 @@ import { FC } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { View } from "react-native";
 import { Home } from "../screens/home/Home.hooks";
-import { useTheme } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 import { useAppTheme } from "../theme/theme";
+import { Profile } from "../screens/profile/Profile.hooks";
 
 const Drawer = createDrawerNavigator();
 
@@ -38,7 +38,7 @@ export const DrawerNavigator: FC = () => {
       />
       <Drawer.Screen
         name={"Profile"}
-        component={() => <View />}
+        component={Profile}
         options={{ drawerLabel: "Profil" }}
       />
     </Drawer.Navigator>

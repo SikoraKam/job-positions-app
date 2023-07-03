@@ -11,7 +11,7 @@ export const ContentInsideContainer: FC<ContentInsideContainerProps> = ({
   isLoading,
 }) => {
   const contentContainerStyle = `
-    flex-1 px-4,
+    flex-1,
     ${contentContainerClassname},
   `;
 
@@ -24,5 +24,5 @@ export const ContentInsideContainer: FC<ContentInsideContainerProps> = ({
       </KeyboardAvoidingScrollView>
     );
   }
-  return <View className={contentContainerStyle}>{children}</View>;
+  return <>{children}</>;
 };
