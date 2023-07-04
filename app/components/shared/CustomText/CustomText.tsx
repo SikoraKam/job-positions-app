@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { CustomTextProps } from "./CustomText.interface";
-import { classNames } from "../../../utils/helpers";
-import { Text } from "react-native";
+import { Text } from "react-native-paper";
 import { RFValue } from "react-native-responsive-fontsize";
 import { DEFAULT_SCREEN_HEIGHT } from "../../../const/layout";
 import { styled } from "nativewind";
+
+const StyledText = styled(Text);
 
 const CustomText: FC<CustomTextProps> = ({
   size = "base",
@@ -62,10 +63,18 @@ const CustomText: FC<CustomTextProps> = ({
       break;
   }
 
+  const weights = {
+    light: "font-light",
+    normal: "font-normal",
+    medium: "font-medium",
+    semibold: "font-semibold",
+    bold: "font-bold",
+  };
+
   return (
-    <Text
+    <StyledText
       onPress={onPress}
-      className={textClassName}
+      className={`${weights[weight]} ${textClassName}`}
       style={{
         fontSize: RFValue(textSize, DEFAULT_SCREEN_HEIGHT),
         lineHeight: RFValue(lineHeight, DEFAULT_SCREEN_HEIGHT),
@@ -73,7 +82,7 @@ const CustomText: FC<CustomTextProps> = ({
       {...otherProps}
     >
       {children}
-    </Text>
+    </StyledText>
   );
 };
 export default CustomText;

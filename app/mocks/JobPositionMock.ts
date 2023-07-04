@@ -17,6 +17,12 @@ export const JobPositionMock: JobPositionDetails = {
     "Praesent quis nisl tortor.",
     "Ut mollis elementum diam, imperdiet ullamcorper mauris sagittis sit amet.",
   ],
+  requirements: [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "Maecenas orci mi, fringilla at accumsan ut, pharetra luctus elit.",
+    "Praesent quis nisl tortor.",
+    "Ut mollis elementum diam, imperdiet ullamcorper mauris sagittis sit amet.",
+  ],
   additionalInfo:
     "Suspendisse potenti. Donec convallis arcu diam, vitae malesuada mi elementum vitae. Donec nibh tellus, tristique in ipsum eu, mollis pellentesque mauris. Maecenas a ullamcorper velit. In hac habitasse platea dictumst. Pellentesque ipsum mauris, euismod sed eros sit amet, lobortis gravida neque.",
   contactEmail: "example@company.pl",
