@@ -51,7 +51,7 @@ export const JobOfferComponent: FC<JobOfferScreenProps> = ({
   const renderTabBar = (props: any) => (
     <StyledTabBar
       {...props}
-      className="bg-background mt-6"
+      className="bg-background mt-4"
       activeColor={theme.colors.copy.black}
       inactiveColor={theme.colors.copy.gray}
       labelStyle="font-semibold"
@@ -60,7 +60,7 @@ export const JobOfferComponent: FC<JobOfferScreenProps> = ({
   );
 
   return (
-    <View className="h-full">
+    <View className="flex-1 bg-background">
       <View className="items-center">
         <Image
           className="h-24 w-full"
@@ -92,7 +92,7 @@ export const JobOfferComponent: FC<JobOfferScreenProps> = ({
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
-        initialLayout={{ width: layout.width, height: layout.height / 2 }}
+        initialLayout={{ width: layout.width }}
       />
     </View>
   );

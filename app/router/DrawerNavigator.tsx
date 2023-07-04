@@ -29,6 +29,7 @@ export const DrawerNavigator: FC = () => {
             locations={[0.3, 0.8]}
           />
         ),
+        headerStatusBarHeight: 40,
       }}
     >
       <Drawer.Screen
