@@ -15,4 +15,6 @@ export type JobPositionDetails = {
   website?: string;
   benefits?: string[];
   partTime?: boolean;
+  companySize?: number;
+  companyOfficeLocations?: string[];
 };

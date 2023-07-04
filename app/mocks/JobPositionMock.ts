@@ -2,7 +2,7 @@ import { JobPositionDetails } from "../types/positions.types";
 
 export const JobPositionMock: JobPositionDetails = {
   imageSource: "https://picsum.photos/400/200",
-  companyName: "Nazwa Firmy",
+  companyName: "Previous Level",
   companyLogoImageSource: "https://picsum.photos/100",
   positionName: "Java Developer",
   location: "Kraków, Polska",
@@ -34,4 +34,6 @@ export const JobPositionMock: JobPositionDetails = {
     "Ut mollis elementum diam, imperdiet ullamcorper mauris sagittis sit amet.",
   ],
   partTime: false,
+  companyOfficeLocations: ["Kraków, ul. Nowochucka", "Gdańsk, ul. Kokoszanel"],
+  companySize: 300,
 };

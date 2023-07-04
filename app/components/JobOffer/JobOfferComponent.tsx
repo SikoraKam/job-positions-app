@@ -9,6 +9,7 @@ import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { useAppTheme } from "../../theme/theme";
 import { JobOfferDescription } from "./JobOfferSections/JobOfferDescription/JobOfferDescription";
 import { JobPositionDetails } from "../../types/positions.types";
+import { JobOfferCompanySection } from "./JobOfferSections/JobOfferCompanySection/JobOfferCompanySection";
 
 const StyledTabBar = styled(TabBar, {
   props: {
@@ -16,20 +17,6 @@ const StyledTabBar = styled(TabBar, {
     indicatorStyle: true,
   },
 });
-
-const FirstRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#ff4081" }} />
-);
-
-const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#673ab7" }} />
-);
-
-// const renderScene = SceneMap({
-//   description: JobOfferDescription,
-//   company: SecondRoute,
-//   salary: FirstRoute,
-// });
 
 export const JobOfferComponent: FC<JobOfferScreenProps> = ({
   positionDetails,
@@ -52,7 +39,7 @@ export const JobOfferComponent: FC<JobOfferScreenProps> = ({
       case "description":
         return <JobOfferDescription {...positionDetails} />;
       case "company":
-        return <SecondRoute />;
+        return <JobOfferCompanySection {...positionDetails} />;
       case "salary":
         return <JobOfferDescription {...positionDetails} />;
       default:
