@@ -6,7 +6,11 @@ import { JobOffer } from "../../components/JobOffer/JobOffer.hooks";
 
 export const HomeScreen = () => {
   return (
-    <ContentContainer withBackButton={false} classname="border px-0">
+    <ContentContainer
+      withBackButton={false}
+      classname="border px-0"
+      safeAreaEdges={["bottom", "left", "right"]}
+    >
       <JobOffer />
     </ContentContainer>
   );

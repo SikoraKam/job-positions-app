@@ -34,7 +34,9 @@ export const DrawerNavigator: FC = () => {
       <Drawer.Screen
         name={"Home"}
         component={Home}
-        options={{ drawerLabel: "Aplikuj" }}
+        options={{
+          drawerLabel: "Aplikuj",
+        }}
       />
       <Drawer.Screen
         name={"Profile"}

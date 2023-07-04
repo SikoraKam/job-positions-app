@@ -8,7 +8,7 @@ export const JobPositionMock: JobPositionDetails = {
   location: "Kraków, Polska",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas orci mi, fringilla at accumsan ut, pharetra luctus elit. Praesent a purus sollicitudin, suscipit leo vitae, suscipit velit. Praesent condimentum vehicula semper. Etiam tempor nisi eu quam rhoncus aliquam. Nullam feugiat nec tortor at molestie. Morbi tempus ipsum ac lacinia accumsan. Duis bibendum pellentesque leo. Curabitur a eleifend mauris, feugiat rutrum eros. Praesent quis nisl tortor. Pellentesque imperdiet mauris a urna auctor, ut dapibus urna mollis. Vivamus eu augue at quam sodales vestibulum vitae egestas massa. Curabitur placerat non sem ac dapibus.",
-  skills: ["Java", "Kubernetes", "Git", "HTML", "CSS"],
+  skills: ["Java", "Kubernetes", "Git", "HTML", "CSS", "React Native"],
   salary: "8000 - 10000 PLN",
   remote: true,
   responsibilities: [

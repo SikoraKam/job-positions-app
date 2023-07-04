@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Edge } from "react-native-safe-area-context";
 
 export interface ContentContainerInterface {
   title?: string;
@@ -12,4 +13,5 @@ export interface ContentContainerInterface {
   withScroll?: boolean;
   error?: any;
   contentContainerClassname?: string;
+  safeAreaEdges?: Edge[];
 }

@@ -27,6 +27,7 @@ export const ContentContainer: FC<ContentContainerInterface> = ({
   withScroll,
   contentContainerClassname,
   error = undefined,
+  safeAreaEdges,
 }) => {
   const getChildrenComponent = () => {
     if (error) return <ErrorView />;
@@ -47,6 +48,7 @@ export const ContentContainer: FC<ContentContainerInterface> = ({
             : IOS_HEADER_PADDING_TOP,
       }}
       className={`flex-1 bg-background px-4 ${classname}`}
+      edges={safeAreaEdges}
     >
       {withHeader && (
         <Header

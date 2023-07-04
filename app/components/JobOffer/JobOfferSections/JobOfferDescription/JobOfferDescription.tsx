@@ -51,7 +51,7 @@ export const JobOfferDescription: FC<JobOfferDescriptionProps> = ({
       <CustomText size="xl" textClassName="mt-4 mb-2" weight="semibold">
         Potrzebne umiejętności
       </CustomText>
-      <View className="wrap flex-row gap-4">
+      <View className="flex-row gap-4 flex-wrap">
         {skills.map((skill, index) => (
           <CustomText textClassName="text-copy-gray" key={index}>
             {"\u2022"} {skill}
@@ -74,6 +74,20 @@ export const JobOfferDescription: FC<JobOfferDescriptionProps> = ({
           </View>
         </>
       )}
+
+      <View className="flex-row mt-4 items-center">
+        <CustomText weight="semibold" size="lg">
+          Możliwość pracy zdalnej:{" "}
+        </CustomText>
+        <CustomText size="lg">{remote ? "Tak" : "Nie"}</CustomText>
+      </View>
+
+      <View className="flex-row mt-4 items-center">
+        <CustomText weight="semibold" size="lg">
+          Możliwy niepełny etat:{" "}
+        </CustomText>
+        <CustomText size="lg">{partTime ? "Tak" : "Nie"}</CustomText>
+      </View>
 
       <View className="pb-8" />
     </StyledScrollView>
