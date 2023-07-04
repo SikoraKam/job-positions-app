@@ -9,4 +9,5 @@ export interface JobOfferDescriptionProps
     | "responsibilities"
     | "partTime"
     | "requirements"
+    | "seniority"
   > {}

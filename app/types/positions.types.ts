@@ -17,4 +17,5 @@ export type JobPositionDetails = {
   partTime?: boolean;
   companySize?: number;
   companyOfficeLocations?: string[];
+  seniority: "senior" | "junior" | "mid";
 };

@@ -36,4 +36,5 @@ export const JobPositionMock: JobPositionDetails = {
   partTime: false,
   companyOfficeLocations: ["Kraków, ul. Nowochucka", "Gdańsk, ul. Kokoszanel"],
   companySize: 300,
+  seniority: "junior",
 };

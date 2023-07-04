@@ -10,6 +10,7 @@ import { useAppTheme } from "../../theme/theme";
 import { JobOfferDescription } from "./JobOfferSections/JobOfferDescription/JobOfferDescription";
 import { JobPositionDetails } from "../../types/positions.types";
 import { JobOfferCompanySection } from "./JobOfferSections/JobOfferCompanySection/JobOfferCompanySection";
+import { JobOfferSalarySection } from "./JobOfferSections/JobOfferSalarySection/JobOfferSalarySection";
 
 const StyledTabBar = styled(TabBar, {
   props: {
@@ -41,7 +42,7 @@ export const JobOfferComponent: FC<JobOfferScreenProps> = ({
       case "company":
         return <JobOfferCompanySection {...positionDetails} />;
       case "salary":
-        return <JobOfferDescription {...positionDetails} />;
+        return <JobOfferSalarySection {...positionDetails} />;
       default:
         return null;
     }

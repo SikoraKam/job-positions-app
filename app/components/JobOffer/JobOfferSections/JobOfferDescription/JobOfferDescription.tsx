@@ -17,6 +17,7 @@ export const JobOfferDescription: FC<JobOfferDescriptionProps> = ({
   responsibilities,
   partTime,
   requirements,
+  seniority,
 }) => {
   return (
     <StyledScrollView contentContainerStyle="px-4">
@@ -31,6 +32,13 @@ export const JobOfferDescription: FC<JobOfferDescriptionProps> = ({
           </CustomText>
         </>
       )}
+
+      <View className="flex-row mt-4 items-center">
+        <CustomText weight="semibold" size="xl">
+          Pozycja:{" "}
+        </CustomText>
+        <CustomText size="lg">{seniority}</CustomText>
+      </View>
 
       {requirements && (
         <>
