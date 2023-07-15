@@ -14,8 +14,6 @@ export const AppContainer: FC = () => {
   useSetup();
   const isAppInitialized = useBoundStore((state) => state.appInitialized);
 
-  console.log("IS INITAILIZED", isAppInitialized);
-
   const onLayoutRootView = useCallback(async () => {
     if (isAppInitialized) {
       await SplashScreen.hideAsync();

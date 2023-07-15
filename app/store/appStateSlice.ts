@@ -19,10 +19,5 @@ export const createAppStateSlice: StateCreator<
 > = (set, get) => ({
   ...initialState,
   setAppInitialized: (isInitialized: boolean) =>
-    set(
-      (state) =>
-        console.log("STATE +++++", isInitialized) || {
-          appInitialized: isInitialized,
-        }
-    ),
+    set((state) => ({ appInitialized: isInitialized })),
 });

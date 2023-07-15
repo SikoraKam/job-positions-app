@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { JobOfferComponent } from "./JobOfferComponent";
-import { JobPositionsMock } from "../../mocks/JobPositionMock";
+import { JobOfferProps } from "./JobOffer.interface";
 
-export const JobOffer: FC = () => {
-  return <JobOfferComponent positionDetails={JobPositionsMock[1]} />;
+export const JobOffer: FC<JobOfferProps> = ({ offer }) => {
+  return <JobOfferComponent positionDetails={offer} />;
 };

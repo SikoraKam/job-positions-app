@@ -1,3 +1,7 @@
-export interface BottomActionBarProps {}
+export interface BottomActionBarProps {
+  acceptOffer: VoidFunction;
+  rejectOffer: VoidFunction;
+  saveOffer: VoidFunction;
+}
 
-export interface BottomActionBarComponentProps {}
+export interface BottomActionBarComponentProps extends BottomActionBarProps {}

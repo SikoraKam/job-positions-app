@@ -1,8 +1,11 @@
 import { JobPositionDetails } from "../../types/positions.types";
+import { Ref } from "react";
+import { ICarouselInstance } from "react-native-reanimated-carousel";
 
 export interface HomeScreenProps {
   recommendedOffers: JobPositionDetails[];
-  // acceptOffer: VoidFunction;
-  // rejectOffer: VoidFunction;
-  // saveOffer: VoidFunction;
+  acceptOffer: () => void;
+  rejectOffer: () => void;
+  saveOffer: () => void;
+  carouselRef: Ref<ICarouselInstance>;
 }

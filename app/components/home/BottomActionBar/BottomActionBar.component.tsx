@@ -5,9 +5,11 @@ import { IconButton } from "react-native-paper";
 import { useAppTheme } from "../../../theme/theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export const BottomActionBarComponent: FC<
-  BottomActionBarComponentProps
-> = ({}) => {
+export const BottomActionBarComponent: FC<BottomActionBarComponentProps> = ({
+  rejectOffer,
+  saveOffer,
+  acceptOffer,
+}) => {
   const theme = useAppTheme();
   const insets = useSafeAreaInsets();
   const { bottom } = insets;
@@ -21,7 +23,7 @@ export const BottomActionBarComponent: FC<
           icon="close-circle"
           iconColor={theme.colors.error}
           size={30}
-          onPress={() => console.log("Pressed")}
+          onPress={rejectOffer}
         />
         <IconButton
           mode="contained"
@@ -29,7 +31,7 @@ export const BottomActionBarComponent: FC<
           icon="content-save"
           iconColor={theme.colors.secondary}
           size={30}
-          onPress={() => console.log("Pressed")}
+          onPress={saveOffer}
         />
         <IconButton
           mode="contained"
@@ -37,7 +39,7 @@ export const BottomActionBarComponent: FC<
           icon="check-circle"
           iconColor={theme.colors.onPrimaryContainer}
           size={30}
-          onPress={() => console.log("Pressed")}
+          onPress={acceptOffer}
         />
       </View>
     </View>
