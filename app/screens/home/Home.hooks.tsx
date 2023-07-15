@@ -15,6 +15,8 @@ export const Home: FC = () => {
 
   const carouselRef: Ref<ICarouselInstance> = useRef(null);
 
+  console.log(recommendedOffers);
+
   const acceptOffer = () => {
     carouselRef?.current?.next({
       count: 1,

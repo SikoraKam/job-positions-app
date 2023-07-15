@@ -27,7 +27,7 @@ export const ContentContainer: FC<ContentContainerInterface> = ({
   withScroll,
   contentContainerClassname,
   error = undefined,
-  safeAreaEdges,
+  safeAreaEdges = ["top", "bottom", "right", "left"],
 }) => {
   const getChildrenComponent = () => {
     if (error) return <ErrorView />;

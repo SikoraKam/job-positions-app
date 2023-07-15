@@ -2,8 +2,8 @@ import { FC } from "react";
 import { BottomActionBarComponentProps } from "./BottomActionBar.interface";
 import { Platform, View } from "react-native";
 import { IconButton } from "react-native-paper";
-import { useAppTheme } from "../../../theme/theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useAppTheme } from "../../../../theme/theme";
 
 export const BottomActionBarComponent: FC<BottomActionBarComponentProps> = ({
   rejectOffer,

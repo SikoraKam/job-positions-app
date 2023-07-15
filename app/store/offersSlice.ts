@@ -45,12 +45,12 @@ export const createOffersSlice: StateCreator<
     })),
   addToRejected: (offer: JobPositionDetails) =>
     set((state) => ({
-      acceptedOffers: [...state.rejectedOffers, offer],
+      rejectedOffers: [...state.rejectedOffers, offer],
       recommendedOffers: removeFromRecommendedHelper(state, offer),
     })),
   addToSavedForFuture: (offer: JobPositionDetails) =>
     set((state) => ({
-      acceptedOffers: [...state.savedForFutureOffers, offer],
+      savedForFutureOffers: [...state.savedForFutureOffers, offer],
       recommendedOffers: removeFromRecommendedHelper(state, offer),
     })),
 

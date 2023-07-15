@@ -5,6 +5,7 @@ import { Home } from "../screens/home/Home.hooks";
 import { LinearGradient } from "expo-linear-gradient";
 import { useAppTheme } from "../theme/theme";
 import { Profile } from "../screens/profile/Profile.hooks";
+import { OffersHistory } from "../screens/offersHistory/OffersHistory.hooks";
 
 const Drawer = createDrawerNavigator();
 
@@ -37,6 +38,13 @@ export const DrawerNavigator: FC = () => {
         component={Home}
         options={{
           drawerLabel: "Aplikuj",
+        }}
+      />
+      <Drawer.Screen
+        name={"OffersHistory"}
+        component={OffersHistory}
+        options={{
+          drawerLabel: "Historia Ofert",
         }}
       />
       <Drawer.Screen
