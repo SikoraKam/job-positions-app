@@ -1,14 +1,12 @@
 import { FC, useState } from "react";
-import { CardValues, JobOfferScreenProps } from "./JobOffer.interface";
-import { View, Image, FlatList, useWindowDimensions } from "react-native";
-import { Avatar, SegmentedButtons, useTheme } from "react-native-paper";
-import AvatarText from "react-native-paper/lib/typescript/src/components/Avatar/AvatarText";
+import { JobOfferScreenProps } from "./JobOffer.interface";
+import { Image, useWindowDimensions, View } from "react-native";
+import { Avatar } from "react-native-paper";
 import CustomText from "../shared/CustomText/CustomText";
 import { styled } from "nativewind";
-import { SceneMap, TabBar, TabView } from "react-native-tab-view";
+import { TabBar, TabView } from "react-native-tab-view";
 import { useAppTheme } from "../../theme/theme";
 import { JobOfferDescription } from "./JobOfferSections/JobOfferDescription/JobOfferDescription";
-import { JobPositionDetails } from "../../types/positions.types";
 import { JobOfferCompanySection } from "./JobOfferSections/JobOfferCompanySection/JobOfferCompanySection";
 import { JobOfferSalarySection } from "./JobOfferSections/JobOfferSalarySection/JobOfferSalarySection";
 

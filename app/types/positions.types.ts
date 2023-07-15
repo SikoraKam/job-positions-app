@@ -1,4 +1,5 @@
 export type JobPositionDetails = {
+  id: string;
   imageSource?: string;
   companyName: string;
   companyLogoImageSource?: string;

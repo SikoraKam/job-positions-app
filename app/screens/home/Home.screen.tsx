@@ -4,8 +4,12 @@ import { logout } from "../../services/api/auth.service";
 import { View } from "react-native";
 import { JobOffer } from "../../components/JobOffer/JobOffer.hooks";
 import { BottomActionBar } from "../../components/home/BottomActionBar/BottomActionBar.hooks";
+import { JobPositionsMock } from "../../mocks/JobPositionMock";
+import { useBoundStore } from "../../store/useBoundStore";
+import { FC } from "react";
+import { HomeScreenProps } from "./Home.interface";
 
-export const HomeScreen = () => {
+export const HomeScreen: FC<HomeScreenProps> = ({ recommendedOffers }) => {
   return (
     <ContentContainer
       withBackButton={false}
@@ -13,7 +17,6 @@ export const HomeScreen = () => {
       safeAreaEdges={["left", "right", "bottom"]}
     >
       <JobOffer />
-
       <BottomActionBar />
     </ContentContainer>
   );

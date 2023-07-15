@@ -2,6 +2,7 @@ import { JobPositionDetails } from "../types/positions.types";
 
 export const JobPositionsMock: JobPositionDetails[] = [
   {
+    id: "dssddssddssfd",
     imageSource: "https://picsum.photos/400/200",
     companyName: "Previous Level",
     companyLogoImageSource: "https://picsum.photos/100",
@@ -43,6 +44,7 @@ export const JobPositionsMock: JobPositionDetails[] = [
     seniority: "junior",
   },
   {
+    id: "dsafegt",
     imageSource: "https://picsum.photos/600/300",
     companyName: "Rudy Gruby Kod",
     companyLogoImageSource: "https://picsum.photos/200",
