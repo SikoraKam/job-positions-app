@@ -50,4 +50,8 @@ module.exports = {
   surfaceDisabled: "rgba(26, 28, 30, 0.12)",
   onSurfaceDisabled: "rgba(26, 28, 30, 0.38)",
   backdrop: "rgba(43, 49, 55, 0.4)",
+  copy: {
+    black: "#000000",
+    gray: "rgb(107,107,104)",
+  },
 };

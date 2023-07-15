@@ -24,6 +24,10 @@ export const paperTheme = {
     primary800: "#006495",
     primary900: "#074d73",
     primary950: "#04314d",
+    copy: {
+      black: "#000000",
+      gray: "rgb(107,107,104)",
+    },
   },
   roundness: 2,
 };

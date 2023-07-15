@@ -3,18 +3,21 @@ import { StyleSheet, Text, View } from "react-native";
 import { useEffect } from "react";
 import firestore from "@react-native-firebase/firestore";
 import { AppContainer } from "./app/AppContainer";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  useEffect(() => {
-    (async () => {
-      const users = await firestore()
-        .collection("Users")
-        .doc("Fdl1XP0hb8fZL3RzFjXk")
-        .get();
-
-      console.log(users);
-    })();
-  });
+  // useEffect(() => {
+  //   (async () => {
+  //     const users = await firestore()
+  //       .collection("Users")
+  //       .doc("Fdl1XP0hb8fZL3RzFjXk")
+  //       .get();
+  //
+  //     console.log(users);
+  //   })();
+  // });
 
   return <AppContainer />;
 }

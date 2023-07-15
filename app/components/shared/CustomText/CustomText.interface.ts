@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { TextProps } from "react-native";
+import { VariantProp } from "react-native-paper/lib/typescript/src/components/Typography/types";
 
 export interface CustomTextProps {
   size?: typeof TextSizeTypes[number];
