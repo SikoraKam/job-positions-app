@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import { OffersHistoryScreenProps } from "./OffersHistory.interface";
-import { ContentContainer } from "../../components/shared/ContentContainer/ContentContainer";
+import { ContentContainer } from "../../../components/shared/ContentContainer/ContentContainer";
 import { useWindowDimensions } from "react-native";
 import { styled } from "nativewind";
 import { TabBar, TabView } from "react-native-tab-view";
-import { useAppTheme } from "../../theme/theme";
-import { HistoryList } from "./components/HistoryList/HistoryList";
+import { useAppTheme } from "../../../theme/theme";
+import { HistoryList } from "../components/HistoryList/HistoryList";
 
 const StyledTabBar = styled(TabBar, {
   props: {
@@ -63,6 +63,7 @@ export const OffersHistoryScreen: FC<OffersHistoryScreenProps> = ({
     >
       <TabView
         renderTabBar={renderTabBar}
+        // @ts-ignore
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}

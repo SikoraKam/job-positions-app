@@ -1,6 +1,7 @@
-import { FC, useState } from "react";
+import { FC, useLayoutEffect, useState } from "react";
 import { OffersHistoryScreen } from "./OffersHistory.screen";
-import { useBoundStore } from "../../store/useBoundStore";
+import { useBoundStore } from "../../../store/useBoundStore";
+import { useNavigation } from "@react-navigation/native";
 
 export const OffersHistory: FC = () => {
   const acceptedOffers = useBoundStore((state) => state.acceptedOffers);

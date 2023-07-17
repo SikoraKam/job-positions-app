@@ -1,4 +1,4 @@
-import { JobPositionDetails } from "../../types/positions.types";
+import { JobPositionDetails } from "../../../types/positions.types";
 
 export interface OffersHistoryProps {}
 
