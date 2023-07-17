@@ -87,6 +87,7 @@ export const JobOfferComponent: FC<JobOfferScreenProps> = ({
 
       <TabView
         renderTabBar={renderTabBar}
+        // @ts-ignore
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}

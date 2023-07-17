@@ -1,13 +1,13 @@
 import { ContentContainer } from "../../components/shared/ContentContainer/ContentContainer";
 import { Dimensions, View } from "react-native";
 import { JobOffer } from "../../components/JobOffer/JobOffer.hooks";
-import { BottomActionBar } from "../../components/home/BottomActionBar/BottomActionBar.hooks";
 import { FC, useState } from "react";
 import { HomeScreenProps } from "./Home.interface";
 import Carousel from "react-native-reanimated-carousel";
 import { LoadingIndicator } from "../../components/shared/LoadingIndicator/LoadingIndicator";
 import { JobPositionDetails } from "../../types/positions.types";
 import CustomText from "../../components/shared/CustomText/CustomText";
+import { BottomActionBar } from "./components/BottomActionBar/BottomActionBar.hooks";
 
 const width = Dimensions.get("screen").width;
 const height = Dimensions.get("screen").height;

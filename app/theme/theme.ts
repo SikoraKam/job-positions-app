@@ -1,8 +1,6 @@
-import * as React from "react";
 import {
   adaptNavigationTheme,
   MD3LightTheme as DefaultTheme,
-  Provider as PaperProvider,
   useTheme,
 } from "react-native-paper";
 import { DefaultTheme as NavigationDefaultTheme } from "@react-navigation/native";
