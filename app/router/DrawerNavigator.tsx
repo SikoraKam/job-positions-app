@@ -9,11 +9,12 @@ import { useAppTheme } from "../theme/theme";
 import { Profile } from "../screens/profile/Profile.hooks";
 import { HistoryStack } from "./HistoryStack";
 import {
-  DrawerActions,
   getFocusedRouteNameFromRoute,
+  ParamListBase,
+  RouteProp,
   useNavigation,
 } from "@react-navigation/native";
-import { IconButton, MD3Colors } from "react-native-paper";
+import { IconButton } from "react-native-paper";
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +22,9 @@ export const DrawerNavigator: FC = () => {
   const navigation = useNavigation();
   const theme = useAppTheme();
 
-  function shouldRenderHeaderBackButtonInHistoryStack(route: string) {
+  function shouldRenderHeaderBackButtonInHistoryStack(
+    route: RouteProp<ParamListBase, "HistoryStack">
+  ) {
     const routeName = getFocusedRouteNameFromRoute(route);
 
     switch (routeName) {
