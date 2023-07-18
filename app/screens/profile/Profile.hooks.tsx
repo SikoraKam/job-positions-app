@@ -1,22 +1,16 @@
-import { FC } from "react";
-import { ContentContainer } from "../../components/shared/ContentContainer/ContentContainer";
-import { Button } from "react-native-paper";
-import { View } from "react-native";
-import { logout } from "../../services/api/auth.service";
+import { FC, useState } from "react";
+import { ProfileScreen } from "./Profile.screen";
+import * as DocumentPicker from "expo-document-picker";
+import { showToastError } from "../../utils/toast";
 
 export const Profile: FC = () => {
-  return (
-    <ContentContainer withBackButton={false}>
-      <View className="flex-1 justify-end">
-        <Button
-          onPress={logout}
-          className="py-1"
-          mode="contained"
-          icon="logout"
-        >
-          Wyloguj się
-        </Button>
-      </View>
-    </ContentContainer>
-  );
+  const [resumePDFUri, setResumePDFUri] = useState<string>();
+
+  const onUploadCV = async () => {
+    const document = await DocumentPicker.getDocumentAsync();
+    if (document.type === "success") setResumePDFUri(document.uri);
+    else showToastError("Nie udało się wczytać dokumentu");
+  };
+
+  return <ProfileScreen onUpload={onUploadCV} resumeUri={resumePDFUri} />;
 };
