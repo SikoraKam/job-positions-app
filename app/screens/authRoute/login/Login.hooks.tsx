@@ -10,6 +10,7 @@ import {
   AuthStackNavigatorType,
 } from "../../../router/AuthStack";
 import { loginUser } from "../../../services/api/auth.service";
+import { useBoundStore } from "../../../store/useBoundStore";
 
 const schema = yup
   .object({
@@ -20,6 +21,7 @@ const schema = yup
 
 export const Login: FC = () => {
   const { navigate } = useNavigation<AuthStackNavigatorType>();
+  const setCurrentUserUId = useBoundStore((state) => state.setCurrentUserUid);
 
   const {
     control,
@@ -36,7 +38,9 @@ export const Login: FC = () => {
   const navigateToRegistration = () => navigate("Register");
 
   const onSubmit = async (data: FormValues) => {
-    await loginUser(data.email, data.password);
+    const uid = await loginUser(data.email, data.password);
+    if (!uid) return;
+    setCurrentUserUId(uid);
   };
 
   return (

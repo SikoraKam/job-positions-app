@@ -10,6 +10,7 @@ import Pdf from "react-native-pdf";
 export const ProfileScreen: FC<ProfileScreenProps> = ({
   onUpload,
   resumeUri,
+  onLogout,
 }) => {
   const renderPdfPreview = () => (
     <View className={"flex-1 items-center"}>
@@ -41,7 +42,7 @@ export const ProfileScreen: FC<ProfileScreenProps> = ({
 
       <View className="flex-1 justify-end">
         <Button
-          onPress={logout}
+          onPress={onLogout}
           className="py-1"
           mode="contained"
           icon="logout"

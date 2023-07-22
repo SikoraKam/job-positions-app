@@ -1,9 +1,5 @@
 import auth from "@react-native-firebase/auth";
-import {
-  showToastError,
-  showToastInfo,
-  showToastSuccess,
-} from "../../utils/toast";
+import { showToastError, showToastSuccess } from "../../utils/toast";
 import firestore from "@react-native-firebase/firestore";
 import { FIRESTORE_COLLECTIONS } from "../../const/firestore";
 
@@ -11,7 +7,7 @@ export const registerUser = async (
   email: string,
   password: string,
   fullName: string
-): Promise<boolean> => {
+): Promise<string | null> => {
   try {
     const createUserResponse = await auth().createUserWithEmailAndPassword(
       email,
@@ -25,11 +21,11 @@ export const registerUser = async (
     };
     await saveUserInFirestore(data);
     showToastSuccess("Rejestracja przebiegła pomyślnie");
-    return true;
+    return uid;
   } catch (error: any) {
     showToastError(error.message);
     console.log(error.message);
-    return false;
+    return null;
   }
 };
 
@@ -51,12 +47,11 @@ const saveUserInFirestore = async (data: {
 export const loginUser = async (email: string, password: string) => {
   try {
     const response = await auth().signInWithEmailAndPassword(email, password);
-    // const uid = response.user.uid
-    return true;
+    return response.user.uid;
   } catch (e: any) {
     showToastError(e.message);
     console.log(e.message);
-    return false;
+    return null;
   }
 };
 
