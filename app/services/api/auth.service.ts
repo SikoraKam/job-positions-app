@@ -3,6 +3,10 @@ import { showToastError, showToastSuccess } from "../../utils/toast";
 import firestore from "@react-native-firebase/firestore";
 import { FIRESTORE_COLLECTIONS } from "../../const/firestore";
 
+export const getLoggedUserUid = () => {
+  return auth().currentUser?.uid;
+};
+
 export const registerUser = async (
   email: string,
   password: string,

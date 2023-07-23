@@ -8,11 +8,9 @@ export const useAuth = () => {
 
   // Handle user state changes
   const onAuthStateChanged = async (user: FirebaseAuthTypes.User | null) => {
-    console.log("USER ===> ", user);
     setUser(user);
     if (user) {
       const token = await user.getIdToken();
-      console.log("--->  token", token);
       setToken(token);
     }
     if (initializing) setInitializing(false);

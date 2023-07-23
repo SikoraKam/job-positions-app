@@ -1,6 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
 import { FIRESTORE_COLLECTIONS } from "../../const/firestore";
 import { showToastError } from "../../utils/toast";
+import { getLoggedUserUid } from "./auth.service";
 
 export const getUserRefByUID = async (uid: string | undefined) => {
   if (!uid) {
@@ -9,4 +10,23 @@ export const getUserRefByUID = async (uid: string | undefined) => {
     return;
   }
   return firestore().collection(FIRESTORE_COLLECTIONS.USERS).doc(uid);
+};
+
+export const addResumeFieldsToUser = async (
+  userUid: string,
+  resumeUrl: string,
+  resumeFileName: string
+) => {
+  const userRef = await getUserRefByUID(userUid);
+
+  userRef?.update({
+    resumeUrl,
+    resumeFileName,
+  });
+};
+
+export const getSavedResumeUri = async () => {
+  const userRef = await getUserRefByUID(getLoggedUserUid());
+  const user = await userRef?.get();
+  return user?.data()?.resumeUrl;
 };
