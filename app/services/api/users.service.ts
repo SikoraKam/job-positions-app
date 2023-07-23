@@ -25,6 +25,15 @@ export const addResumeFieldsToUser = async (
   });
 };
 
+export const deleteResumeFieldsFromUser = async (userUid: string) => {
+  const userRef = await getUserRefByUID(userUid);
+
+  userRef?.update({
+    resumeUrl: "",
+    resumeFileName: "",
+  });
+};
+
 export const getSavedResumeUri = async () => {
   const userRef = await getUserRefByUID(getLoggedUserUid());
   const user = await userRef?.get();

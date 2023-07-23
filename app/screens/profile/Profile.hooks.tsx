@@ -5,7 +5,10 @@ import { showToastError } from "../../utils/toast";
 import storage from "@react-native-firebase/storage";
 import { useBoundStore } from "../../store/useBoundStore";
 import { logout } from "../../services/api/auth.service";
-import { addResumeFieldsToUser } from "../../services/api/users.service";
+import {
+  addResumeFieldsToUser,
+  deleteResumeFieldsFromUser,
+} from "../../services/api/users.service";
 
 export const Profile: FC = () => {
   const [resumePDFUri, setResumePDFUri] = useState<string>();
@@ -45,8 +48,18 @@ export const Profile: FC = () => {
     } else showToastError("Nie udało się wczytać dokumentu");
   };
 
+  const onDeleteResume = async () => {
+    if (!userUid) {
+      console.error("Brak uid");
+      return;
+    }
+    await deleteResumeFieldsFromUser(userUid);
+    setResumePDFUri("");
+  };
+
   return (
     <ProfileScreen
+      onDeleteResume={onDeleteResume}
       onLogout={onLogout}
       onUpload={onUploadCV}
       resumeUri={resumePDFUri}

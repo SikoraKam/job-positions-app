@@ -3,19 +3,12 @@ import { JobOfferScreenProps } from "./JobOffer.interface";
 import { Image, useWindowDimensions, View } from "react-native";
 import { Avatar } from "react-native-paper";
 import CustomText from "../shared/CustomText/CustomText";
-import { styled } from "nativewind";
-import { TabBar, TabView } from "react-native-tab-view";
+import { TabView } from "react-native-tab-view";
 import { useAppTheme } from "../../theme/theme";
 import { JobOfferDescription } from "./JobOfferSections/JobOfferDescription/JobOfferDescription";
 import { JobOfferCompanySection } from "./JobOfferSections/JobOfferCompanySection/JobOfferCompanySection";
 import { JobOfferSalarySection } from "./JobOfferSections/JobOfferSalarySection/JobOfferSalarySection";
-
-const StyledTabBar = styled(TabBar, {
-  props: {
-    labelStyle: true,
-    indicatorStyle: true,
-  },
-});
+import { StyledTabBar } from "../../uiStyledComponents/StyledTabBar";
 
 export const JobOfferComponent: FC<JobOfferScreenProps> = ({
   positionDetails,
