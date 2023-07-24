@@ -19,6 +19,7 @@ export const CustomInput: FC<CustomInputInterface> = ({
   return (
     <>
       <TextInput
+        autoCapitalize="none"
         mode="outlined"
         label={label}
         onChangeText={onChange}

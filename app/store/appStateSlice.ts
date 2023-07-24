@@ -1,10 +1,11 @@
 import { StateCreator } from "zustand/esm";
 import { StoreState } from "./useBoundStore";
-import { OffersSlice } from "./offersSlice";
 
 export interface AppStateSlice {
   appInitialized: boolean;
   setAppInitialized: (isInitialized: boolean) => void;
+
+  resetAppStateSlice: () => void;
 }
 
 const initialState = {
@@ -20,4 +21,7 @@ export const createAppStateSlice: StateCreator<
   ...initialState,
   setAppInitialized: (isInitialized: boolean) =>
     set((state) => ({ appInitialized: isInitialized })),
+  resetAppStateSlice: () => {
+    set({ ...initialState, appInitialized: true });
+  },
 });

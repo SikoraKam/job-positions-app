@@ -1,14 +1,8 @@
 import { FC } from "react";
 import { JobOfferCompanySectionProps } from "./JobOfferCompanySection.interface";
-import { Linking, ScrollView, View } from "react-native";
+import { Linking, View } from "react-native";
 import CustomText from "../../../shared/CustomText/CustomText";
-import { styled } from "nativewind";
-
-const StyledScrollView = styled(ScrollView, {
-  props: {
-    contentContainerStyle: true,
-  },
-});
+import { StyledScrollView } from "../../../../uiStyledComponents/StyledScrollView";
 
 export const JobOfferCompanySection: FC<JobOfferCompanySectionProps> = ({
   companyName,

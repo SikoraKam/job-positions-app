@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { showToastError } from "../../../utils/toast";
 import auth from "@react-native-firebase/auth";
 import { registerUser } from "../../../services/api/auth.service";
+import { useBoundStore } from "../../../store/useBoundStore";
 
 const schema = yup
   .object({
@@ -22,6 +23,8 @@ const schema = yup
   .required();
 
 export const Register: FC = () => {
+  const setCurrentUserUId = useBoundStore((state) => state.setCurrentUserUid);
+
   const {
     control,
     handleSubmit,
@@ -42,12 +45,9 @@ export const Register: FC = () => {
       return;
     }
 
-    const response = await registerUser(
-      data.email,
-      data.password,
-      data.fullName
-    );
-    if (!response) return;
+    const uid = await registerUser(data.email, data.password, data.fullName);
+    if (!uid) return;
+    setCurrentUserUId(uid);
   };
 
   return (
