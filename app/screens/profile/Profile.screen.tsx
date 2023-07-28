@@ -14,22 +14,6 @@ export const ProfileScreen: FC<ProfileScreenProps> = ({
   onLogout,
   onDeleteResume,
 }) => {
-  const sendMail = async () => {
-    if (!resumeUri) {
-      console.error("Brak resume uri");
-      return;
-    }
-
-    console.log("+++++++++++++++>>>>>>>", resumeUri);
-    const formData = {
-      name: "Marg",
-      email: "kamil3.test@gmail.com",
-      message: `Moja wiadomość ${resumeUri}`,
-    };
-
-    await sendEmail(formData);
-  };
-
   const renderPdfPreview = () => (
     <View className={"flex-1 items-center"}>
       <Pdf
@@ -67,8 +51,6 @@ export const ProfileScreen: FC<ProfileScreenProps> = ({
       )}
 
       <View className="flex-1 justify-end">
-        <Button onPress={sendMail}>Wyslij mail</Button>
-
         <Button
           onPress={onLogout}
           className="py-1"
