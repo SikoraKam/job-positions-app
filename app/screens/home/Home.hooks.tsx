@@ -3,7 +3,8 @@ import { HomeScreen } from "./Home.screen";
 import { useBoundStore } from "../../store/useBoundStore";
 import { useRef } from "react/index";
 import { ICarouselInstance } from "react-native-reanimated-carousel";
-import { JobPositionDetails } from "../../types/positions.types";
+import { emailApplicationMessageConstructor } from "../../utils/emails";
+import { sendEmail } from "../../services/api/emails.service";
 
 export const Home: FC = () => {
   const recommendedOffers = useBoundStore((state) => state.recommendedOffers);
@@ -12,16 +13,37 @@ export const Home: FC = () => {
   );
   const addToAccepted = useBoundStore((state) => state.addToAccepted);
   const addToRejected = useBoundStore((state) => state.addToRejected);
+  const userData = useBoundStore((state) => state.userData);
+  const savedResumeUri = useBoundStore((state) => state.savedResumeUri);
 
   const carouselRef: Ref<ICarouselInstance> = useRef(null);
 
-  console.log(recommendedOffers);
+  const applyForPosition = async () => {
+    if (!userData || !savedResumeUri) {
+      console.error("Brak pól");
+      return;
+    }
+
+    const emailFormData = emailApplicationMessageConstructor(
+      recommendedOffers[0],
+      {
+        nameAndLastName: userData?.name,
+        email: userData?.email,
+        resumeUri: savedResumeUri,
+      }
+    );
+
+    await sendEmail(emailFormData);
+  };
 
   const acceptOffer = () => {
     carouselRef?.current?.next({
       count: 1,
       animated: true,
-      onFinished: () => addToAccepted(recommendedOffers[0]),
+      onFinished: async () => {
+        addToAccepted(recommendedOffers[0]);
+        await applyForPosition();
+      },
     });
   };
 

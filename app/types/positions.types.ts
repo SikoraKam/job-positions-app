@@ -12,7 +12,7 @@ export type JobPositionDetails = {
   remote?: boolean;
   responsibilities?: string[];
   additionalInfo?: string;
-  contactEmail?: string;
+  contactEmail: string;
   website?: string;
   benefits?: string[];
   partTime?: boolean;

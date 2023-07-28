@@ -27,7 +27,7 @@ export const JobPositionsMock: JobPositionDetails[] = [
     ],
     additionalInfo:
       "Suspendisse potenti. Donec convallis arcu diam, vitae malesuada mi elementum vitae. Donec nibh tellus, tristique in ipsum eu, mollis pellentesque mauris. Maecenas a ullamcorper velit. In hac habitasse platea dictumst. Pellentesque ipsum mauris, euismod sed eros sit amet, lobortis gravida neque.",
-    contactEmail: "example@company.pl",
+    contactEmail: "noreplyjobpositionapp@gmail.com",
     website: "https://google.com",
     benefits: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -69,7 +69,7 @@ export const JobPositionsMock: JobPositionDetails[] = [
     ],
     additionalInfo:
       "Suspendisse potenti. Donec convallis arcu diam, vitae malesuada mi elementum vitae. Donec nibh tellus, tristique in ipsum eu, mollis pellentesque mauris. Maecenas a ullamcorper velit. In hac habitasse platea dictumst. Pellentesque ipsum mauris, euismod sed eros sit amet, lobortis gravida neque.",
-    contactEmail: "example@company.pl",
+    contactEmail: "noreplyjobpositionapp@gmail.com",
     website: "https://google.com",
     benefits: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -109,7 +109,7 @@ export const JobPositionsMock: JobPositionDetails[] = [
     ],
     additionalInfo:
       "Suspendisse potenti. Donec convallis arcu diam, vitae malesuada mi elementum vitae. Donec nibh tellus, tristique in ipsum eu, mollis pellentesque mauris. Maecenas a ullamcorper velit. In hac habitasse platea dictumst. Pellentesque ipsum mauris, euismod sed eros sit amet, lobortis gravida neque.",
-    contactEmail: "example@company.pl",
+    contactEmail: "noreplyjobpositionapp@gmail.com",
     website: "https://google.com",
     benefits: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -152,7 +152,7 @@ export const JobPositionsMock: JobPositionDetails[] = [
     ],
     additionalInfo:
       "Suspendisse potenti. Donec convallis arcu diam, vitae malesuada mi elementum vitae. Donec nibh tellus, tristique in ipsum eu, mollis pellentesque mauris. Maecenas a ullamcorper velit. In hac habitasse platea dictumst. Pellentesque ipsum mauris, euismod sed eros sit amet, lobortis gravida neque.",
-    contactEmail: "example@company.pl",
+    contactEmail: "noreplyjobpositionapp@gmail.com",
     website: "https://google.com",
     benefits: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -195,7 +195,7 @@ export const JobPositionsMock: JobPositionDetails[] = [
     ],
     additionalInfo:
       "Suspendisse potenti. Donec convallis arcu diam, vitae malesuada mi elementum vitae. Donec nibh tellus, tristique in ipsum eu, mollis pellentesque mauris. Maecenas a ullamcorper velit. In hac habitasse platea dictumst. Pellentesque ipsum mauris, euismod sed eros sit amet, lobortis gravida neque.",
-    contactEmail: "example@company.pl",
+    contactEmail: "noreplyjobpositionapp@gmail.com",
     website: "https://google.com",
     benefits: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
