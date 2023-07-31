@@ -16,6 +16,7 @@ export const Profile: FC = () => {
   const resetUserStore = useBoundStore((state) => state.resetUserSlice);
   const userUid = useBoundStore((state) => state.currentUserUid);
   const savedResumeUri = useBoundStore((state) => state.savedResumeUri);
+  const setSavedResumeUri = useBoundStore((state) => state.setSavedResumeUri);
 
   useEffect(() => {
     if (savedResumeUri) setResumePDFUri(savedResumeUri);
@@ -42,6 +43,7 @@ export const Profile: FC = () => {
 
       task.on("state_changed", (taskSnapshot) => {
         taskSnapshot.ref.getDownloadURL().then(async (url) => {
+          setSavedResumeUri(url);
           await addResumeFieldsToUser(userUid, url, resumeFileName);
         });
       });

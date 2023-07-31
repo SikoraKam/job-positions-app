@@ -6,6 +6,7 @@ import { Button, FAB, IconButton } from "react-native-paper";
 import { logout } from "../../services/api/auth.service";
 import { ProfileScreenProps } from "./Profile.interface";
 import Pdf from "react-native-pdf";
+import { sendEmail } from "../../services/api/emails.service";
 
 export const ProfileScreen: FC<ProfileScreenProps> = ({
   onUpload,
