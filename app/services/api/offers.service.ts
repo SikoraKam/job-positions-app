@@ -1,14 +1,44 @@
 import Axios from "axios/index";
+import { JobPositionDetails } from "../../types/positions.types";
+import firestore from "@react-native-firebase/firestore";
+import { FIRESTORE_COLLECTIONS } from "../../const/firestore";
+import { showToastError } from "../../utils/toast";
 import { JobPositionsMock } from "../../mocks/JobPositionMock";
 
-export const getRecommendedJobs = async () => {
-  const resumeUrl =
-    "https://firebasestorage.googleapis.com/v0/b/job-positions-app.appspot.com/o/junior-sql-developer2%20%20-%20Template%2014.pdf_1690197620.261?alt=media&token=0e6afdb8-7821-4916-ae22-6ec9873be0fd";
+export const getRecommendedJobs = async (
+  resumeUrl: string,
+  positions: JobPositionDetails[]
+) => {
   const response = await Axios.post(
     "https://on-request-example-srjtptp7ba-uc.a.run.app",
-    { resumeUrl, positions: JobPositionsMock }
+    { resumeUrl, positions }
   );
 
-  console.log("RESPONSE ___", response);
-  return response;
+  return response.data;
+};
+
+export const postJobPosition = async (position: JobPositionDetails) => {
+  const positionsRef = firestore().collection(FIRESTORE_COLLECTIONS.POSITIONS);
+  const { id, ...rest } = position;
+  try {
+    await positionsRef.add(rest);
+  } catch (e: any) {
+    showToastError(e.message);
+    console.error("Positions post failed", e.message);
+  }
+};
+
+export const getAvailableJobPositions = async (): Promise<
+  JobPositionDetails[]
+> => {
+  const positionsRef = firestore().collection(FIRESTORE_COLLECTIONS.POSITIONS);
+  const positions = await positionsRef.get();
+  // return positions.docs.map((doc) => ({
+  //   ...(doc.data() as JobPositionDetails),
+  //   id: doc.id,
+  // }));
+  return JobPositionsMock.map((doc) => ({
+    ...(doc as JobPositionDetails),
+    id: doc.id,
+  }));
 };
