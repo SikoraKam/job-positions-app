@@ -67,7 +67,6 @@ def getEntities(doc):
 def on_request_example(req: https_fn.Request) -> https_fn.Response:
     import json
     jsonResponse = json.loads(req.data.decode('utf-8'))
-    print("jsonResponse ---> ", jsonResponse)
     url = jsonResponse["resumeUrl"]
     response = requests.get(url)
     if response.status_code == 200:
@@ -78,44 +77,21 @@ def on_request_example(req: https_fn.Request) -> https_fn.Response:
 
     text = convertToText("resume")
 
-    print("Text::::", text)
     doc = nlp(text)
-    print("doc ----", doc)
 
     entities = getEntities(doc)
 
-    req_skills1 = [
-        "Javascript", "Html", "React", "Svelte"
-    ]
-
-    req_skills2 = [
-        "Typescript", "Html", "React",
-    ]
-
-    req_skills3 = [
-        "Spanish", "Excel"
-    ]
-
-    req_skills4 = [
-        "Sql", "Selenium", "Angular", "Vue"
-    ]
-    req_skills_offers = [req_skills1, req_skills2, req_skills3, req_skills4]
+    job_offers = jsonResponse["positions"]
 
 
 
-    match_skill_counts = []
-    for req_skills in req_skills_offers:
-      print("SEARCHED SKILLS", req_skills)
-      print("ENTITIES SKILLS", entities["SKILLS"])
-      unique_skills = set(skill for skill in req_skills if skill in entities["SKILLS"])
-      print("unique_skills", unique_skills)
-
+    recommended_offers = []
+    for offer in job_offers:
+      print(offer)
+      unique_skills = set(skill for skill in offer["skills"] if skill in entities["SKILLS"])
       count = len(unique_skills)
-      print("count", count)
+      ratio = count / len(offer["skills"])
+      if ratio >= 0.5:
+        recommended_offers.append(offer)
 
-      ratio = count / len(req_skills)
-      match_skill_counts.append(ratio)
-
-    highest_ratio_index = match_skill_counts.index(max(match_skill_counts))
-    print("highest_ratio_index", highest_ratio_index)
-    return https_fn.Response(str(highest_ratio_index))
+    return https_fn.Response(json.dumps(recommended_offers))

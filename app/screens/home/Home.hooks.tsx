@@ -5,6 +5,7 @@ import { useRef } from "react/index";
 import { ICarouselInstance } from "react-native-reanimated-carousel";
 import { emailApplicationMessageConstructor } from "../../utils/emails";
 import { sendEmail } from "../../services/api/emails.service";
+import { getRecommendedJobs } from "../../services/api/offers.service";
 
 export const Home: FC = () => {
   const recommendedOffers = useBoundStore((state) => state.recommendedOffers);
@@ -33,7 +34,8 @@ export const Home: FC = () => {
       }
     );
 
-    await sendEmail(emailFormData);
+    // await sendEmail(emailFormData);
+    await getRecommendedJobs();
   };
 
   const acceptOffer = () => {
