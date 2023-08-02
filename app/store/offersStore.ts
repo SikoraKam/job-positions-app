@@ -1,6 +1,7 @@
 import { JobPositionDetails } from "../types/positions.types";
 import { StateCreator } from "zustand";
 import { StoreState } from "./useBoundStore";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 export interface OffersSlice {
   recommendedOffers: JobPositionDetails[];
@@ -13,6 +14,8 @@ export interface OffersSlice {
   addToAccepted: (offer: JobPositionDetails) => void;
 
   reinitializeRecommendedOffers: (offers: JobPositionDetails[]) => void;
+
+  resetOffersSlice: () => void;
 }
 
 const initialState = {
@@ -56,4 +59,13 @@ export const createOffersSlice: StateCreator<
 
   reinitializeRecommendedOffers: (offers: JobPositionDetails[]) =>
     set((state) => ({ recommendedOffers: offers })),
+
+  resetOffersSlice: () => {
+    set((state) => ({
+      ...initialState,
+      acceptedOffers: state.acceptedOffers,
+      rejectedOffers: state.rejectedOffers,
+      savedForFutureOffers: state.savedForFutureOffers,
+    }));
+  },
 });
