@@ -7,10 +7,7 @@ interface EmailFormData {
 }
 
 export const sendEmail = async (formData: EmailFormData) => {
-  const response = await Axios.post(
-    "https://us-central1-job-positions-app.cloudfunctions.net/submit",
-    formData
-  );
+  const response = await Axios.post("", formData);
 
   return response;
 };

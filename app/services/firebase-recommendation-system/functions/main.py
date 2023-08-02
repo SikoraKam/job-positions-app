@@ -64,7 +64,7 @@ def getEntities(doc):
 
 
 @https_fn.on_request()
-def on_request_example(req: https_fn.Request) -> https_fn.Response:
+def getRecommended(req: https_fn.Request) -> https_fn.Response:
     import json
     jsonResponse = json.loads(req.data.decode('utf-8'))
     url = jsonResponse["resumeUrl"]

@@ -38,6 +38,7 @@
     "react-native": "0.71.6",
     "react-native-blob-util": "^0.18.3",
     "react-native-device-info": "^10.6.0",
+    "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-pager-view": "6.1.2",
     "react-native-paper": "^5.7.0",

@@ -43,7 +43,6 @@ export const Home: FC = () => {
           allJobPositions
         );
 
-        // const recommendedOffers = JobPositionsMock;
         reinitializeRecommendedOffers(recommendedOffers);
         setInitialRecommendedOffers(recommendedOffers);
       }

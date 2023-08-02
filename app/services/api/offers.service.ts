@@ -9,12 +9,11 @@ export const getRecommendedJobs = async (
   resumeUrl: string,
   positions: JobPositionDetails[]
 ) => {
-  const response = await Axios.post(
-    "https://on-request-example-srjtptp7ba-uc.a.run.app",
-    { resumeUrl, positions }
-  );
+  // const response = await Axios.post("", { resumeUrl, positions });
 
-  return response.data;
+  // return response.data;
+
+  return JobPositionsMock;
 };
 
 export const postJobPosition = async (position: JobPositionDetails) => {
@@ -33,12 +32,8 @@ export const getAvailableJobPositions = async (): Promise<
 > => {
   const positionsRef = firestore().collection(FIRESTORE_COLLECTIONS.POSITIONS);
   const positions = await positionsRef.get();
-  // return positions.docs.map((doc) => ({
-  //   ...(doc.data() as JobPositionDetails),
-  //   id: doc.id,
-  // }));
-  return JobPositionsMock.map((doc) => ({
-    ...(doc as JobPositionDetails),
+  return positions.docs.map((doc) => ({
+    ...(doc.data() as JobPositionDetails),
     id: doc.id,
   }));
 };
