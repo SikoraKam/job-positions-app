@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ca31bdf-c60e-43c3-8d76-74260230ff12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/shared/CustomInput/CustomInput.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/shared/CustomInput/CustomInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/shared/ContentContainer/ContentContainer.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/shared/ContentContainer/ContentContainer.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/shared/ContentContainer/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/shared/ContentContainer/ContentContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/authRoute/login/Login.hooks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/authRoute/login/Login.hooks.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/authRoute/login/Login.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/authRoute/login/Login.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/authRoute/login/Login.screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/authRoute/login/Login.screen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/theme/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/theme/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/home/Home.hooks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/home/Home.hooks.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/api/emails.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/api/emails.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/api/offers.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/api/offers.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/firebase-email/functions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/firebase-email/functions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/firebase-recommendation-system/functions/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/firebase-recommendation-system/functions/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,20 +20,22 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
+        <option value="tsconfig.json" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="configuration" />
+        <entry key="$PROJECT_DIR$" value="email-with-application" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/App.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/android/app/build.gradle" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/android/app/google-services.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
@@ -41,6 +43,21 @@
     <setting file="file://$PROJECT_DIR$/android/app/src/main/java/com/anonymous/jobpositionsapp/MainActivity.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/android/build.gradle" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/AppContainer.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/components/shared/Toast/Toast.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/const/firestore.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/hooks/useAuth.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/router/DrawerNavigator.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/router/Router.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/screens/authRoute/login/Login.hooks.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/screens/authRoute/register/Register.hooks.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/screens/authRoute/register/Register.interface.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/screens/authRoute/register/Register.screen.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/screens/home/Home.hooks.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/screens/home/Home.screen.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/services/api/auth.service.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/theme/colors.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/theme/theme.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/babel.config.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/google-services.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
@@ -75,10 +92,11 @@
       <recent name="$PROJECT_DIR$/app/components/shared/ContentContainer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/components/shared" />
-      <recent name="$PROJECT_DIR$/app/screens/authRoute/login" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/android/app" />
+      <recent name="$PROJECT_DIR$/app/services/firebase-recommendation-system/functions" />
+      <recent name="$PROJECT_DIR$/app/services/firebase-email/functions" />
+      <recent name="$PROJECT_DIR$/app/screens/history/OffersHistory" />
+      <recent name="$PROJECT_DIR$/app/screens/home/components" />
+      <recent name="$PROJECT_DIR$/app/components/shared/Toast" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -93,7 +111,22 @@
       <workItem from="1681756992795" duration="5697000" />
       <workItem from="1681926221736" duration="7119000" />
       <workItem from="1681982206465" duration="4126000" />
-      <workItem from="1681986402767" duration="1683000" />
+      <workItem from="1681986402767" duration="1796000" />
+      <workItem from="1682003711639" duration="1963000" />
+      <workItem from="1682005737164" duration="1903000" />
+      <workItem from="1682073564078" duration="8894000" />
+      <workItem from="1682431378523" duration="7313000" />
+      <workItem from="1682520277727" duration="601000" />
+      <workItem from="1688384411085" duration="5636000" />
+      <workItem from="1688391893435" duration="8399000" />
+      <workItem from="1688468313796" duration="13362000" />
+      <workItem from="1688981562593" duration="64000" />
+      <workItem from="1689325523078" duration="5106000" />
+      <workItem from="1689408436342" duration="27587000" />
+      <workItem from="1689671126122" duration="4055000" />
+      <workItem from="1690059582671" duration="2189000" />
+      <workItem from="1690061793510" duration="21182000" />
+      <workItem from="1690573461602" duration="36410000" />
     </task>
     <servers />
   </component>
@@ -101,7 +134,6 @@
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app.d.ts" />
         <option value="$PROJECT_DIR$/app.d.ts" />
       </list>
     </option>
