@@ -19,7 +19,7 @@ export const LoadingIndicator: FC<LoadingIndicatorProps> = ({
 
   if (fillContainer) {
     return (
-      <View className="items-center justify-center w-full h-full">
+      <View className="items-center justify-center flex-1">
         {renderSpinner()}
       </View>
     );

@@ -3,7 +3,7 @@ import { Ref } from "react";
 import { ICarouselInstance } from "react-native-reanimated-carousel";
 
 export interface HomeScreenProps {
-  recommendedOffers: JobPositionDetails[];
+  arrayOfOffersForCarousel: (JobPositionDetails | null)[];
   acceptOffer: () => void;
   rejectOffer: () => void;
   saveOffer: () => void;

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useBoundStore } from "../store/useBoundStore";
-import { JobPositionsMock } from "../mocks/JobPositionMock";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import {
   getSavedResumeUri,
@@ -8,10 +7,6 @@ import {
 } from "../services/api/users.service";
 
 export const useSetup = () => {
-  const reinitializeRecommendedOffers = useBoundStore(
-    (state) => state.reinitializeRecommendedOffers
-  );
-
   const setAppInitialized = useBoundStore((state) => state.setAppInitialized);
   const setCurrentUserUid = useBoundStore((state) => state.setCurrentUserUid);
   const setSavedResumeUri = useBoundStore((state) => state.setSavedResumeUri);
@@ -25,9 +20,6 @@ export const useSetup = () => {
   const onAuthStateChanged = async (user: FirebaseAuthTypes.User | null) => {
     if (!user) return;
 
-    const recommendedOffers = JobPositionsMock;
-    reinitializeRecommendedOffers(recommendedOffers);
-
     const uid = auth().currentUser?.uid;
     if (uid) setCurrentUserUid(uid);
 
@@ -36,6 +28,7 @@ export const useSetup = () => {
 
     const resumeUri = await getSavedResumeUri();
     if (resumeUri) setSavedResumeUri(resumeUri);
+    else setSavedResumeUri("");
   };
 
   useEffect(() => {

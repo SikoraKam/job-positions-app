@@ -1,7 +1,7 @@
 import { ContentContainer } from "../../components/shared/ContentContainer/ContentContainer";
 import { Dimensions, View } from "react-native";
 import { JobOffer } from "../../components/JobOffer/JobOffer.hooks";
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { HomeScreenProps } from "./Home.interface";
 import Carousel from "react-native-reanimated-carousel";
 import { LoadingIndicator } from "../../components/shared/LoadingIndicator/LoadingIndicator";
@@ -13,14 +13,12 @@ const width = Dimensions.get("screen").width;
 const height = Dimensions.get("screen").height;
 
 export const HomeScreen: FC<HomeScreenProps> = ({
-  recommendedOffers,
+  arrayOfOffersForCarousel,
   carouselRef,
   rejectOffer,
   acceptOffer,
   saveOffer,
 }) => {
-  const [arrayOfOffersForCarousel] = useState([...recommendedOffers, null]);
-
   const renderItem = ({ item }: { item: JobPositionDetails | null }) => {
     if (item) return <JobOffer offer={item} />;
     else
@@ -51,7 +49,9 @@ export const HomeScreen: FC<HomeScreenProps> = ({
           renderItem={renderItem}
         />
       ) : (
-        <LoadingIndicator fillContainer />
+        <View className="bg-background flex-1">
+          <LoadingIndicator fillContainer />
+        </View>
       )}
       <BottomActionBar {...{ acceptOffer, saveOffer, rejectOffer }} />
     </ContentContainer>
