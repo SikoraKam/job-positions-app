@@ -18,3 +18,4 @@ web-build/
 
 GoogleService-Info.plist
 .env
+app/services/firebase-recommendation-system/functions/venv/
