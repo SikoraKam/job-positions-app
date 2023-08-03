@@ -22,20 +22,12 @@ const initialState = {
   userData: undefined,
 };
 
-export const useUserStore = create<UserStore>()(
-  persist(
-    (set) => ({
-      ...initialState,
-      setCurrentUserUid: (uid) => set(() => ({ currentUserUid: uid })),
-      setSavedResumeUri: (uri) => set(() => ({ savedResumeUri: uri })),
-      setUserData: (data) => set(() => ({ userData: data })),
-      resetUserSlice: () => {
-        set(initialState);
-      },
-    }),
-    {
-      name: "user-storage", // name of item in the storage (must be unique)
-      storage: createJSONStorage(() => AsyncStorage), // (optional) by default the 'localStorage' is used
-    }
-  )
-);
+export const useUserStore = create<UserStore>()((set) => ({
+  ...initialState,
+  setCurrentUserUid: (uid) => set(() => ({ currentUserUid: uid })),
+  setSavedResumeUri: (uri) => set(() => ({ savedResumeUri: uri })),
+  setUserData: (data) => set(() => ({ userData: data })),
+  resetUserSlice: () => {
+    set(initialState);
+  },
+}));

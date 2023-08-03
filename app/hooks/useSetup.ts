@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
-import {
-  getSavedResumeUri,
-  getUserContactDetails,
-  getUserDoc,
-} from "../services/api/users.service";
+import { getUserDoc } from "../services/api/users.service";
 import { useAppStateStore } from "../store/appStateStore";
 import { useUserStore } from "../store/userStore";
 import { AsyncStorageKeys, getDataFromAsyncStorage } from "../utils/storage";
@@ -49,10 +45,6 @@ export const useSetup = () => {
     if (!user) return;
 
     const uid = auth().currentUser?.uid;
-    const previousUid = await getDataFromAsyncStorage(
-      AsyncStorageKeys.PREVIOUS_USER_UID
-    );
-    if (uid === previousUid) return;
 
     if (uid) setCurrentUserUid(uid);
     const userData = await getUserDoc();

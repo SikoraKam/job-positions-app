@@ -1,13 +1,9 @@
-import { FC, Ref, useEffect, useState } from "react";
+import { FC, Ref, useEffect, useMemo, useState } from "react";
 import { HomeScreen } from "./Home.screen";
 import { useRef } from "react/index";
 import { ICarouselInstance } from "react-native-reanimated-carousel";
 import { emailApplicationMessageConstructor } from "../../utils/emails";
-import { sendEmail } from "../../services/api/emails.service";
-import {
-  getAvailableJobPositions,
-  getRecommendedJobs,
-} from "../../services/api/offers.service";
+import { getRecommendedJobs } from "../../services/api/offers.service";
 import { JobPositionDetails } from "../../types/positions.types";
 import { useOffersStore } from "../../store/offersStore";
 import { useUserStore } from "../../store/userStore";
@@ -16,6 +12,8 @@ import {
   postRejectedOfferId,
   postSavedOfferId,
 } from "../../services/api/users.service";
+import { filterAvailablePositionsWhichAreNotProcessedByUser } from "../../utils/helpers";
+import { shallow } from "zustand/shallow";
 
 export const Home: FC = () => {
   const recommendedOffers = useOffersStore((state) => state.recommendedOffers);
@@ -29,6 +27,19 @@ export const Home: FC = () => {
   const addToRejected = useOffersStore((state) => state.addToRejected);
   const userData = useUserStore((state) => state.userData);
   const savedResumeUri = useUserStore((state) => state.savedResumeUri);
+  const [acceptedOffers, rejectedOffers, savedForFutureOffers] = useOffersStore(
+    (state) => [
+      state.acceptedOffers,
+      state.rejectedOffers,
+      state.savedForFutureOffers,
+    ],
+    shallow
+  );
+  const processedOffers = useMemo(() => {
+    if (!acceptedOffers || !rejectedOffers || !savedForFutureOffers)
+      return undefined;
+    else return [...acceptedOffers, ...rejectedOffers, ...savedForFutureOffers];
+  }, [acceptedOffers, rejectedOffers, savedForFutureOffers]);
 
   const carouselRef: Ref<ICarouselInstance> = useRef(null);
 
@@ -36,25 +47,34 @@ export const Home: FC = () => {
     useState<(JobPositionDetails | null)[]>();
 
   useEffect(() => {
-    if (!reinitializeRecommendedOffers) return;
+    console.log(processedOffers);
+    if (!reinitializeRecommendedOffers || !processedOffers) return;
+
+    if (initialRecommendedOffers?.length) return;
 
     (async () => {
-      if (typeof savedResumeUri === undefined) return;
-      const allJobPositions = await getAvailableJobPositions();
+      if (typeof savedResumeUri === "undefined") return;
+
+      const availablePositions =
+        await filterAvailablePositionsWhichAreNotProcessedByUser(
+          processedOffers
+        );
 
       if (savedResumeUri) {
         const recommendedOffers = await getRecommendedJobs(
           savedResumeUri,
-          allJobPositions
+          availablePositions
         );
 
         reinitializeRecommendedOffers(recommendedOffers);
-        setInitialRecommendedOffers(recommendedOffers);
+        setInitialRecommendedOffers(
+          recommendedOffers.length ? recommendedOffers : [null]
+        );
       } else {
         setInitialRecommendedOffers([null]);
       }
     })();
-  }, [savedResumeUri, reinitializeRecommendedOffers]);
+  }, [savedResumeUri, reinitializeRecommendedOffers, processedOffers]);
 
   const applyForPosition = async () => {
     if (!userData || !savedResumeUri) {
