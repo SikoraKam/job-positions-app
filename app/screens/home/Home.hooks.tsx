@@ -11,6 +11,11 @@ import {
 import { JobPositionDetails } from "../../types/positions.types";
 import { useOffersStore } from "../../store/offersStore";
 import { useUserStore } from "../../store/userStore";
+import {
+  postAcceptedOfferId,
+  postRejectedOfferId,
+  postSavedOfferId,
+} from "../../services/api/users.service";
 
 export const Home: FC = () => {
   const recommendedOffers = useOffersStore((state) => state.recommendedOffers);
@@ -28,7 +33,7 @@ export const Home: FC = () => {
   const carouselRef: Ref<ICarouselInstance> = useRef(null);
 
   const [initialRecommendedOffers, setInitialRecommendedOffers] =
-    useState<JobPositionDetails[]>();
+    useState<(JobPositionDetails | null)[]>();
 
   useEffect(() => {
     if (!reinitializeRecommendedOffers) return;
@@ -45,6 +50,8 @@ export const Home: FC = () => {
 
         reinitializeRecommendedOffers(recommendedOffers);
         setInitialRecommendedOffers(recommendedOffers);
+      } else {
+        setInitialRecommendedOffers([null]);
       }
     })();
   }, [savedResumeUri, reinitializeRecommendedOffers]);
@@ -64,7 +71,7 @@ export const Home: FC = () => {
       }
     );
 
-    await sendEmail(emailFormData);
+    // await sendEmail(emailFormData);
   };
 
   const acceptOffer = () => {
@@ -74,6 +81,7 @@ export const Home: FC = () => {
       onFinished: async () => {
         addToAccepted(recommendedOffers[0]);
         await applyForPosition();
+        await postAcceptedOfferId(recommendedOffers[0].id);
       },
     });
   };
@@ -82,7 +90,10 @@ export const Home: FC = () => {
     carouselRef?.current?.next({
       count: 1,
       animated: true,
-      onFinished: () => addToRejected(recommendedOffers[0]),
+      onFinished: async () => {
+        addToRejected(recommendedOffers[0]);
+        await postRejectedOfferId(recommendedOffers[0].id);
+      },
     });
   };
 
@@ -90,7 +101,10 @@ export const Home: FC = () => {
     carouselRef?.current?.next({
       count: 1,
       animated: true,
-      onFinished: () => addToSavedForFuture(recommendedOffers[0]),
+      onFinished: async () => {
+        addToSavedForFuture(recommendedOffers[0]);
+        await postSavedOfferId(recommendedOffers[0].id);
+      },
     });
   };
 

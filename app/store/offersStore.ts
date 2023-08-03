@@ -14,6 +14,15 @@ export interface OffersStore {
   addToAccepted: (offer: JobPositionDetails) => void;
 
   reinitializeRecommendedOffers: (offers: JobPositionDetails[]) => void;
+  loadProcessedOffers: ({
+    accepted,
+    rejected,
+    saved,
+  }: {
+    accepted?: JobPositionDetails[];
+    rejected?: JobPositionDetails[];
+    saved?: JobPositionDetails[];
+  }) => void;
 
   resetOffersSlice: () => void;
 }
@@ -56,6 +65,13 @@ export const useOffersStore = create<OffersStore>()(
 
       reinitializeRecommendedOffers: (offers: JobPositionDetails[]) =>
         set((state) => ({ recommendedOffers: offers })),
+
+      loadProcessedOffers: (processedOffers) =>
+        set(() => ({
+          acceptedOffers: processedOffers?.accepted ?? [],
+          rejectedOffers: processedOffers?.rejected ?? [],
+          savedForFutureOffers: processedOffers?.saved ?? [],
+        })),
 
       resetOffersSlice: () => {
         set((state) => ({

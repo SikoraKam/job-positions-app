@@ -1,8 +1,10 @@
-import firestore from "@react-native-firebase/firestore";
+import firestore, {
+  FirebaseFirestoreTypes,
+} from "@react-native-firebase/firestore";
 import { FIRESTORE_COLLECTIONS } from "../../const/firestore";
 import { showToastError } from "../../utils/toast";
 import { getLoggedUserUid } from "./auth.service";
-import { UserData } from "../../types/user.types";
+import { UserContactDetails, UserData } from "../../types/user.types";
 
 export const getUserRefByUID = async (uid: string | undefined) => {
   if (!uid) {
@@ -11,6 +13,21 @@ export const getUserRefByUID = async (uid: string | undefined) => {
     return;
   }
   return firestore().collection(FIRESTORE_COLLECTIONS.USERS).doc(uid);
+};
+
+export const getUserDoc = async (): Promise<UserData> => {
+  const userRef = await getUserRefByUID(getLoggedUserUid());
+  const user = await userRef?.get();
+  return {
+    id: user?.data()?.id,
+    email: user?.data()?.email,
+    name: user?.data()?.fullName,
+    resumeUrl: user?.data()?.resumeUrl,
+    resumeFileName: user?.data()?.resumeFileName,
+    savedOffersIds: user?.data()?.savedOffers,
+    rejectedOffersIds: user?.data()?.rejectedOffers,
+    acceptedOffersIds: user?.data()?.acceptedOffers,
+  };
 };
 
 export const addResumeFieldsToUser = async (
@@ -41,11 +58,42 @@ export const getSavedResumeUri = async () => {
   return user?.data()?.resumeUrl;
 };
 
-export const getUserDetails = async (): Promise<UserData> => {
+export const getUserContactDetails = async (): Promise<UserContactDetails> => {
   const userRef = await getUserRefByUID(getLoggedUserUid());
   const user = await userRef?.get();
   return {
     name: user?.data()?.fullName,
     email: user?.data()?.email,
+  };
+};
+
+export const postAcceptedOfferId = async (offerId: string) => {
+  const userRef = await getUserRefByUID(getLoggedUserUid());
+  userRef?.update({
+    acceptedOffers: firestore.FieldValue.arrayUnion(offerId),
+  });
+};
+
+export const postSavedOfferId = async (offerId: string) => {
+  const userRef = await getUserRefByUID(getLoggedUserUid());
+  userRef?.update({
+    savedOffers: firestore.FieldValue.arrayUnion(offerId),
+  });
+};
+
+export const postRejectedOfferId = async (offerId: string) => {
+  const userRef = await getUserRefByUID(getLoggedUserUid());
+  userRef?.update({
+    rejectedOffers: firestore.FieldValue.arrayUnion(offerId),
+  });
+};
+
+export const getProcessedOffers = async () => {
+  const userRef = await getUserRefByUID(getLoggedUserUid());
+  const user = await userRef?.get();
+  return {
+    acceptedOffers: user?.data()?.acceptedOffers,
+    rejectedOffers: user?.data()?.rejectedOffers,
+    savedOffers: user?.data()?.savedOffers,
   };
 };
