@@ -1,6 +1,5 @@
 import { FC, Ref, useEffect, useState } from "react";
 import { HomeScreen } from "./Home.screen";
-import { useBoundStore } from "../../store/useBoundStore";
 import { useRef } from "react/index";
 import { ICarouselInstance } from "react-native-reanimated-carousel";
 import { emailApplicationMessageConstructor } from "../../utils/emails";
@@ -10,19 +9,21 @@ import {
   getRecommendedJobs,
 } from "../../services/api/offers.service";
 import { JobPositionDetails } from "../../types/positions.types";
+import { useOffersStore } from "../../store/offersStore";
+import { useUserStore } from "../../store/userStore";
 
 export const Home: FC = () => {
-  const recommendedOffers = useBoundStore((state) => state.recommendedOffers);
-  const addToSavedForFuture = useBoundStore(
+  const recommendedOffers = useOffersStore((state) => state.recommendedOffers);
+  const addToSavedForFuture = useOffersStore(
     (state) => state.addToSavedForFuture
   );
-  const reinitializeRecommendedOffers = useBoundStore(
+  const reinitializeRecommendedOffers = useOffersStore(
     (state) => state.reinitializeRecommendedOffers
   );
-  const addToAccepted = useBoundStore((state) => state.addToAccepted);
-  const addToRejected = useBoundStore((state) => state.addToRejected);
-  const userData = useBoundStore((state) => state.userData);
-  const savedResumeUri = useBoundStore((state) => state.savedResumeUri);
+  const addToAccepted = useOffersStore((state) => state.addToAccepted);
+  const addToRejected = useOffersStore((state) => state.addToRejected);
+  const userData = useUserStore((state) => state.userData);
+  const savedResumeUri = useUserStore((state) => state.savedResumeUri);
 
   const carouselRef: Ref<ICarouselInstance> = useRef(null);
 
@@ -33,7 +34,6 @@ export const Home: FC = () => {
     if (!reinitializeRecommendedOffers) return;
 
     (async () => {
-      console.log("WYKONAŁEM SIE");
       if (typeof savedResumeUri === undefined) return;
       const allJobPositions = await getAvailableJobPositions();
 

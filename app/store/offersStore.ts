@@ -1,9 +1,9 @@
 import { JobPositionDetails } from "../types/positions.types";
-import { StateCreator } from "zustand";
-import { StoreState } from "./useBoundStore";
+import { create, StateCreator } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export interface OffersSlice {
+export interface OffersStore {
   recommendedOffers: JobPositionDetails[];
   rejectedOffers: JobPositionDetails[];
   acceptedOffers: JobPositionDetails[];
@@ -26,7 +26,7 @@ const initialState = {
 };
 
 const removeFromRecommendedHelper = (
-  state: OffersSlice,
+  state: OffersStore,
   offerToRemove: JobPositionDetails
 ) => {
   return state.recommendedOffers.filter(
@@ -34,38 +34,43 @@ const removeFromRecommendedHelper = (
   );
 };
 
-export const createOffersSlice: StateCreator<
-  StoreState,
-  [],
-  [],
-  OffersSlice
-> = (set, get) => ({
-  ...initialState,
-  addToAccepted: (offer: JobPositionDetails) =>
-    set((state) => ({
-      acceptedOffers: [...state.acceptedOffers, offer],
-      recommendedOffers: removeFromRecommendedHelper(state, offer),
-    })),
-  addToRejected: (offer: JobPositionDetails) =>
-    set((state) => ({
-      rejectedOffers: [...state.rejectedOffers, offer],
-      recommendedOffers: removeFromRecommendedHelper(state, offer),
-    })),
-  addToSavedForFuture: (offer: JobPositionDetails) =>
-    set((state) => ({
-      savedForFutureOffers: [...state.savedForFutureOffers, offer],
-      recommendedOffers: removeFromRecommendedHelper(state, offer),
-    })),
-
-  reinitializeRecommendedOffers: (offers: JobPositionDetails[]) =>
-    set((state) => ({ recommendedOffers: offers })),
-
-  resetOffersSlice: () => {
-    set((state) => ({
+export const useOffersStore = create<OffersStore>()(
+  persist(
+    (set) => ({
       ...initialState,
-      acceptedOffers: state.acceptedOffers,
-      rejectedOffers: state.rejectedOffers,
-      savedForFutureOffers: state.savedForFutureOffers,
-    }));
-  },
-});
+      addToAccepted: (offer: JobPositionDetails) =>
+        set((state) => ({
+          acceptedOffers: [...state.acceptedOffers, offer],
+          recommendedOffers: removeFromRecommendedHelper(state, offer),
+        })),
+      addToRejected: (offer: JobPositionDetails) =>
+        set((state) => ({
+          rejectedOffers: [...state.rejectedOffers, offer],
+          recommendedOffers: removeFromRecommendedHelper(state, offer),
+        })),
+      addToSavedForFuture: (offer: JobPositionDetails) =>
+        set((state) => ({
+          savedForFutureOffers: [...state.savedForFutureOffers, offer],
+          recommendedOffers: removeFromRecommendedHelper(state, offer),
+        })),
+
+      reinitializeRecommendedOffers: (offers: JobPositionDetails[]) =>
+        set((state) => ({ recommendedOffers: offers })),
+
+      resetOffersSlice: () => {
+        set((state) => ({
+          ...initialState,
+        }));
+      },
+    }),
+    {
+      name: "offers-storage",
+      storage: createJSONStorage(() => AsyncStorage),
+      partialize: (state) => ({
+        acceptedOffers: state.acceptedOffers,
+        rejectedOffers: state.rejectedOffers,
+        savedForFutureOffers: state.savedForFutureOffers,
+      }),
+    }
+  )
+);

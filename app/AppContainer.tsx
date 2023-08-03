@@ -5,14 +5,14 @@ import { NavigationLightTheme, paperTheme } from "./theme/theme";
 import { Router } from "./router/Router";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "./components/shared/Toast/Toast";
-import { useBoundStore } from "./store/useBoundStore";
 import * as SplashScreen from "expo-splash-screen";
 import { LoadingIndicator } from "./components/shared/LoadingIndicator/LoadingIndicator";
 import { useSetup } from "./hooks/useSetup";
+import { useAppStateStore } from "./store/appStateStore";
 
 export const AppContainer: FC = () => {
   useSetup();
-  const isAppInitialized = useBoundStore((state) => state.appInitialized);
+  const isAppInitialized = useAppStateStore((state) => state.appInitialized);
 
   const onLayoutRootView = useCallback(async () => {
     if (isAppInitialized) {

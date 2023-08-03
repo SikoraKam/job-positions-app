@@ -3,20 +3,25 @@ import { ProfileScreen } from "./Profile.screen";
 import * as DocumentPicker from "expo-document-picker";
 import { showToastError } from "../../utils/toast";
 import storage from "@react-native-firebase/storage";
-import { useBoundStore } from "../../store/useBoundStore";
 import { logout } from "../../services/api/auth.service";
 import {
   addResumeFieldsToUser,
   deleteResumeFieldsFromUser,
 } from "../../services/api/users.service";
+import { useAppStateStore } from "../../store/appStateStore";
+import { useUserStore } from "../../store/userStore";
+import { useOffersStore } from "../../store/offersStore";
 
 export const Profile: FC = () => {
   const [resumePDFUri, setResumePDFUri] = useState<string>();
-  const resetAppStateStore = useBoundStore((state) => state.resetAppStateSlice);
-  const resetUserStore = useBoundStore((state) => state.resetUserSlice);
-  const userUid = useBoundStore((state) => state.currentUserUid);
-  const savedResumeUri = useBoundStore((state) => state.savedResumeUri);
-  const setSavedResumeUri = useBoundStore((state) => state.setSavedResumeUri);
+  const resetAppStateStore = useAppStateStore(
+    (state) => state.resetAppStateSlice
+  );
+  const resetUserStore = useUserStore((state) => state.resetUserSlice);
+  const resetOfferStore = useOffersStore((state) => state.resetOffersSlice);
+  const userUid = useUserStore((state) => state.currentUserUid);
+  const savedResumeUri = useUserStore((state) => state.savedResumeUri);
+  const setSavedResumeUri = useUserStore((state) => state.setSavedResumeUri);
 
   useEffect(() => {
     if (savedResumeUri) setResumePDFUri(savedResumeUri);
@@ -25,6 +30,7 @@ export const Profile: FC = () => {
   const onLogout = async () => {
     resetAppStateStore();
     resetUserStore();
+    resetOfferStore();
     await logout();
   };
 

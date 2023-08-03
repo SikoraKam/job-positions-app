@@ -1,16 +1,20 @@
 import { useEffect } from "react";
-import { useBoundStore } from "../store/useBoundStore";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import {
   getSavedResumeUri,
   getUserDetails,
 } from "../services/api/users.service";
+import { useAppStateStore } from "../store/appStateStore";
+import { useUserStore } from "../store/userStore";
+import { AsyncStorageKeys, getDataFromAsyncStorage } from "../utils/storage";
 
 export const useSetup = () => {
-  const setAppInitialized = useBoundStore((state) => state.setAppInitialized);
-  const setCurrentUserUid = useBoundStore((state) => state.setCurrentUserUid);
-  const setSavedResumeUri = useBoundStore((state) => state.setSavedResumeUri);
-  const setUserData = useBoundStore((state) => state.setUserData);
+  const setAppInitialized = useAppStateStore(
+    (state) => state.setAppInitialized
+  );
+  const setCurrentUserUid = useUserStore((state) => state.setCurrentUserUid);
+  const setSavedResumeUri = useUserStore((state) => state.setSavedResumeUri);
+  const setUserData = useUserStore((state) => state.setUserData);
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
@@ -21,8 +25,12 @@ export const useSetup = () => {
     if (!user) return;
 
     const uid = auth().currentUser?.uid;
-    if (uid) setCurrentUserUid(uid);
+    const previousUid = await getDataFromAsyncStorage(
+      AsyncStorageKeys.PREVIOUS_USER_UID
+    );
+    if (uid === previousUid) return;
 
+    if (uid) setCurrentUserUid(uid);
     const userData = await getUserDetails();
     if (userData) setUserData(userData);
 

@@ -5,9 +5,8 @@ import { FormValues } from "./Register.interface";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { showToastError } from "../../../utils/toast";
-import auth from "@react-native-firebase/auth";
 import { registerUser } from "../../../services/api/auth.service";
-import { useBoundStore } from "../../../store/useBoundStore";
+import { useUserStore } from "../../../store/userStore";
 
 const schema = yup
   .object({
@@ -23,7 +22,7 @@ const schema = yup
   .required();
 
 export const Register: FC = () => {
-  const setCurrentUserUId = useBoundStore((state) => state.setCurrentUserUid);
+  const setCurrentUserUId = useUserStore((state) => state.setCurrentUserUid);
 
   const {
     control,
