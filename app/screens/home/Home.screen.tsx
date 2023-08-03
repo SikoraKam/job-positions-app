@@ -1,5 +1,5 @@
 import { ContentContainer } from "../../components/shared/ContentContainer/ContentContainer";
-import { Dimensions, View } from "react-native";
+import { Button, Dimensions, View } from "react-native";
 import { JobOffer } from "../../components/JobOffer/JobOffer.hooks";
 import { FC, useMemo, useState } from "react";
 import { HomeScreenProps } from "./Home.interface";

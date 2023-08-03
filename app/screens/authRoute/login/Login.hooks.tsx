@@ -10,7 +10,7 @@ import {
   AuthStackNavigatorType,
 } from "../../../router/AuthStack";
 import { loginUser } from "../../../services/api/auth.service";
-import { useBoundStore } from "../../../store/useBoundStore";
+import { useUserStore } from "../../../store/userStore";
 
 const schema = yup
   .object({
@@ -21,7 +21,7 @@ const schema = yup
 
 export const Login: FC = () => {
   const { navigate } = useNavigation<AuthStackNavigatorType>();
-  const setCurrentUserUId = useBoundStore((state) => state.setCurrentUserUid);
+  const setCurrentUserUId = useUserStore((state) => state.setCurrentUserUid);
 
   const {
     control,

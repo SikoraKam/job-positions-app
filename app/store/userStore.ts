@@ -1,8 +1,9 @@
-import { StateCreator } from "zustand/esm/index";
-import { StoreState } from "./useBoundStore";
 import { UserData } from "../types/user.types";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export interface UserSlice {
+export interface UserStore {
   currentUserUid: string | undefined;
   setCurrentUserUid: (uid: string) => void;
 
@@ -21,10 +22,7 @@ const initialState = {
   userData: undefined,
 };
 
-export const createUserSlice: StateCreator<StoreState, [], [], UserSlice> = (
-  set,
-  get
-) => ({
+export const useUserStore = create<UserStore>()((set) => ({
   ...initialState,
   setCurrentUserUid: (uid) => set(() => ({ currentUserUid: uid })),
   setSavedResumeUri: (uri) => set(() => ({ savedResumeUri: uri })),
@@ -32,4 +30,4 @@ export const createUserSlice: StateCreator<StoreState, [], [], UserSlice> = (
   resetUserSlice: () => {
     set(initialState);
   },
-});
+}));
