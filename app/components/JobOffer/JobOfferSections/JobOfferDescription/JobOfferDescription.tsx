@@ -56,16 +56,20 @@ export const JobOfferDescription: FC<JobOfferDescriptionProps> = ({
         </>
       )}
 
-      <CustomText size="xl" textClassName="mt-4 mb-2" weight="semibold">
-        Potrzebne umiejętności
-      </CustomText>
-      <View className="flex-row gap-4 flex-wrap">
-        {skills.map((skill, index) => (
-          <CustomText textClassName="text-copy-gray" key={index}>
-            {"\u2022"} {skill}
+      {skills && (
+        <>
+          <CustomText size="xl" textClassName="mt-4 mb-2" weight="semibold">
+            Potrzebne umiejętności
           </CustomText>
-        ))}
-      </View>
+          <View className="flex-row gap-4 flex-wrap">
+            {skills?.map((skill, index) => (
+              <CustomText textClassName="text-copy-gray" key={index}>
+                {"\u2022"} {skill}
+              </CustomText>
+            ))}
+          </View>
+        </>
+      )}
 
       {responsibilities && (
         <>

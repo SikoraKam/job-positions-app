@@ -8,16 +8,5 @@ import * as SplashScreen from "expo-splash-screen";
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  // useEffect(() => {
-  //   (async () => {
-  //     const users = await firestore()
-  //       .collection("Users")
-  //       .doc("Fdl1XP0hb8fZL3RzFjXk")
-  //       .get();
-  //
-  //     console.log(users);
-  //   })();
-  // });
-
   return <AppContainer />;
 }

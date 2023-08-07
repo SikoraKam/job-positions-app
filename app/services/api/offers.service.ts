@@ -3,9 +3,12 @@ import { JobPositionDetails } from "../../types/positions.types";
 import firestore from "@react-native-firebase/firestore";
 import { FIRESTORE_COLLECTIONS } from "../../const/firestore";
 import { showToastError } from "../../utils/toast";
-import { JobPositionsMock } from "../../mocks/JobPositionMock";
+import {
+  JobPositionsForDescriptionsMock,
+  JobPositionsMock,
+} from "../../mocks/JobPositionMock";
 
-export const getRecommendedJobs = async (
+export const getRecommendedJobsBasedOnSkills = async (
   resumeUrl: string,
   positions: JobPositionDetails[]
 ) => {
@@ -17,6 +20,46 @@ export const getRecommendedJobs = async (
   // return response.data;
 
   return JobPositionsMock;
+};
+
+export const getRecommendedJobsBasedOnDescription = async (
+  resumeUrl: string,
+  positions: JobPositionDetails[]
+) => {
+  // const response = await Axios.post(
+  //   "",
+  //   { resumeUrl, positions }
+  // );
+  //
+  // return response.data;
+  return JobPositionsForDescriptionsMock;
+};
+
+export const getRecommendedJobs = async (
+  resumeUrl: string,
+  positions: JobPositionDetails[]
+) => {
+  const splitted = positions.reduce(
+    (r, o) => {
+      r[!!o.skills ? "withSkills" : "withoutSkills"].push(o);
+      return r;
+    },
+    {
+      withSkills: [] as JobPositionDetails[],
+      withoutSkills: [] as JobPositionDetails[],
+    }
+  );
+
+  const recommendedByDescription = await getRecommendedJobsBasedOnDescription(
+    resumeUrl,
+    splitted.withoutSkills
+  );
+  const recommendedBySkills = await getRecommendedJobsBasedOnSkills(
+    resumeUrl,
+    splitted.withSkills
+  );
+
+  return [...recommendedByDescription, ...recommendedBySkills];
 };
 
 export const postJobPosition = async (position: JobPositionDetails) => {
