@@ -7,7 +7,7 @@ export type JobPositionDetails = {
   location: string;
   description?: string;
   requirements?: string[];
-  skills: string[];
+  skills?: string[];
   salary: number | string;
   remote?: boolean;
   responsibilities?: string[];

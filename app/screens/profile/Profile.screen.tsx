@@ -5,6 +5,14 @@ import CustomText from "../../components/shared/CustomText/CustomText";
 import { Button, FAB, IconButton } from "react-native-paper";
 import { ProfileScreenProps } from "./Profile.interface";
 import Pdf from "react-native-pdf";
+import {
+  getRecommendedJobsBasedOnDescription,
+  postJobPosition,
+} from "../../services/api/offers.service";
+import {
+  JobPositionsForDescriptionsMock,
+  JobPositionsMock,
+} from "../../mocks/JobPositionMock";
 
 export const ProfileScreen: FC<ProfileScreenProps> = ({
   onUpload,

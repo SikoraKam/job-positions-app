@@ -3,7 +3,10 @@ import { HomeScreen } from "./Home.screen";
 import { useRef } from "react/index";
 import { ICarouselInstance } from "react-native-reanimated-carousel";
 import { emailApplicationMessageConstructor } from "../../utils/emails";
-import { getRecommendedJobs } from "../../services/api/offers.service";
+import {
+  getRecommendedJobs,
+  getRecommendedJobsBasedOnSkills,
+} from "../../services/api/offers.service";
 import { JobPositionDetails } from "../../types/positions.types";
 import { useOffersStore } from "../../store/offersStore";
 import { useUserStore } from "../../store/userStore";
@@ -47,7 +50,6 @@ export const Home: FC = () => {
     useState<(JobPositionDetails | null)[]>();
 
   useEffect(() => {
-    console.log(processedOffers);
     if (!reinitializeRecommendedOffers || !processedOffers) return;
 
     if (initialRecommendedOffers?.length) return;
@@ -75,6 +77,8 @@ export const Home: FC = () => {
       }
     })();
   }, [savedResumeUri, reinitializeRecommendedOffers, processedOffers]);
+
+  console.log("=====> ", initialRecommendedOffers);
 
   const applyForPosition = async () => {
     if (!userData || !savedResumeUri) {
